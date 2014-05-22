@@ -27,8 +27,6 @@
 		04580C39192CF202008B0A2C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04580C38192CF202008B0A2C /* QuartzCore.framework */; };
 		04580C3B192D0302008B0A2C /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04580C3A192D0302008B0A2C /* images.xcassets */; };
 		04C867F7192D19EF0035FEB1 /* UserOverviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C867F6192D19EF0035FEB1 /* UserOverviewTableViewController.m */; };
-		04C86810192D1BF80035FEB1 /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C8680F192D1BF80035FEB1 /* IndexViewController.m */; };
-		04C86813192D1C1A0035FEB1 /* IndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C86812192D1C1A0035FEB1 /* IndexView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,10 +71,6 @@
 		04580C3C192D0787008B0A2C /* FatFrankSample-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FatFrankSample-Regular.otf"; sourceTree = "<group>"; };
 		04C867F5192D19EF0035FEB1 /* UserOverviewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserOverviewTableViewController.h; sourceTree = "<group>"; };
 		04C867F6192D19EF0035FEB1 /* UserOverviewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserOverviewTableViewController.m; sourceTree = "<group>"; };
-		04C8680E192D1BF80035FEB1 /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexViewController.h; sourceTree = "<group>"; };
-		04C8680F192D1BF80035FEB1 /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexViewController.m; sourceTree = "<group>"; };
-		04C86811192D1C1A0035FEB1 /* IndexView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexView.h; sourceTree = "<group>"; };
-		04C86812192D1C1A0035FEB1 /* IndexView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +135,6 @@
 				04580BF9192CDDA4008B0A2C /* AppDelegate.h */,
 				04580BFA192CDDA4008B0A2C /* AppDelegate.m */,
 				04580BF1192CDDA4008B0A2C /* Supporting Files */,
-				04C867F8192D1AEA0035FEB1 /* Index */,
 				04580C19192CDF8B008B0A2C /* user_overview */,
 				04580C31192CEFE5008B0A2C /* chat_view */,
 				04580C3A192D0302008B0A2C /* images.xcassets */,
@@ -228,17 +221,6 @@
 				04580C24192CE05F008B0A2C /* UserOverviewTableViewCell.m */,
 			);
 			name = cell;
-			sourceTree = "<group>";
-		};
-		04C867F8192D1AEA0035FEB1 /* Index */ = {
-			isa = PBXGroup;
-			children = (
-				04C8680E192D1BF80035FEB1 /* IndexViewController.h */,
-				04C8680F192D1BF80035FEB1 /* IndexViewController.m */,
-				04C86811192D1C1A0035FEB1 /* IndexView.h */,
-				04C86812192D1C1A0035FEB1 /* IndexView.m */,
-			);
-			name = Index;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,9 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04580C37192CF006008B0A2C /* ChatView.m in Sources */,
-				04C86813192D1C1A0035FEB1 /* IndexView.m in Sources */,
 				04580C2B192CEA2E008B0A2C /* User.m in Sources */,
-				04C86810192D1BF80035FEB1 /* IndexViewController.m in Sources */,
 				04580BFB192CDDA4008B0A2C /* AppDelegate.m in Sources */,
 				04C867F7192D19EF0035FEB1 /* UserOverviewTableViewController.m in Sources */,
 				04580BF7192CDDA4008B0A2C /* main.m in Sources */,

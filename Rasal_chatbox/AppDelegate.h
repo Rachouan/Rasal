@@ -7,15 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "IndexViewController.h"
 #import "UserOverviewTableViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-//@property (nonatomic, strong) UserOverviewTableViewController *userOverviewVC;
-@property (nonatomic, strong) IndexViewController *indexVC;
-
+@property (nonatomic, strong) UserOverviewTableViewController *userOverviewVC;
 @property (nonatomic, strong) UINavigationController *navController;
 
 @end

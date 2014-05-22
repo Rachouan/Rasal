@@ -14,6 +14,6 @@
 @property (nonatomic, strong) NSString *voornaam;
 @property (nonatomic, strong) NSString *profilePic;
 
-@property (nonatomic) int identifier;
+@property (nonatomic) NSInteger identifier;
 
 @end

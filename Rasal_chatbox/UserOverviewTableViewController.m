@@ -19,7 +19,7 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        self.title = @"Users";
+        self.title = @"Rasal";
         self.users = [NSMutableArray array];
         
         NSString *path = [[NSBundle mainBundle] pathForResource:@"users" ofType:@"json"];
@@ -42,18 +42,22 @@
     return self;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 100.0f;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.tableView.delegate = self;
     
-     UIEdgeInsets inset = UIEdgeInsetsMake(70, 0, 0, 0);
+     UIEdgeInsets inset = UIEdgeInsetsMake(20, 0, 0, 0);
      self.tableView.contentInset = inset;
      [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 120, 0, 20)];
     
     [self.tableView registerClass:[UserOverviewTableViewCell class] forCellReuseIdentifier:@"userCell"];
-    [self.tableView setSeparatorColor:[UIColor colorWithRed:0.94 green:0.98 blue:0.45 alpha:1]];
+    //[self.tableView setSeparatorColor:[UIColor colorWithRed:0.94 green:0.98 blue:0.45 alpha:1]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -101,9 +105,6 @@
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
-}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
