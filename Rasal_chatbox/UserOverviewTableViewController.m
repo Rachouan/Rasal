@@ -89,7 +89,7 @@
     
     NSLog(@"hier komt die");
     
-    cell.contentScaleFactor = 30;
+    /*cell.contentScaleFactor = 30;
     cell.textLabel.text = user.voornaam;
     cell.textLabel.font = [UIFont fontWithName:@"AvenirNext-MediumItalic" size:20];
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
@@ -100,7 +100,55 @@
     cell.imageView.layer.borderWidth = 5;
     cell.imageView.layer.borderColor = [UIColor colorWithHue:0.18 saturation:0.54 brightness:0.98 alpha:1].CGColor;
     cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"message_icon"]];
-    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", user.profilePic]];
+    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", user.profilePic]];*/
+    
+    //create your own labels and image view object, specify the frame
+    
+    if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", user.profilePic]];
+    
+
+    UIImageView *photo = [[UIImageView alloc] initWithFrame:CGRectMake(225.0, 0.0, image.size.width, image.size.height)];
+    photo.image = image;
+    
+    
+    CALayer * imageLayer = [CALayer layer];
+    imageLayer.frame = CGRectMake(0, 0, 100, 100);
+    imageLayer.contents = (__bridge id)(photo.image.CGImage);
+    
+    [cell.contentView.layer addSublayer:imageLayer];
+    
+    CAShapeLayer *mask = [CAShapeLayer layer];
+    mask.fillColor = [UIColor whiteColor].CGColor;
+    mask.path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, 70, 70)].CGPath;
+    mask.position = CGPointMake(imageLayer.bounds.origin.x + (imageLayer.frame.size.width)/2, imageLayer.bounds.origin.y + (imageLayer.frame.size.height)/2);
+    mask.bounds = CGRectMake(0, 0, 70, 70);
+    
+    
+    [cell.contentView.layer addSublayer:mask];
+    
+    
+    UILabel *mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(mask.bounds.origin.x + mask.bounds.size.width + 40, (cell.frame.size.height/2 - 15), 220.0, 15.0)];
+    mainLabel.font = [UIFont fontWithName:@"Bariol-Regular" size:20];
+    mainLabel.textColor = [UIColor colorWithRed:17.0f/255.0f green:46.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
+    [cell.contentView addSubview:mainLabel];
+    
+    UILabel *secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(mask.bounds.origin.x + mask.bounds.size.width + 40, (cell.frame.size.height/2 + 5), 220.0, 20)];
+    secondLabel.font = [UIFont fontWithName:@"Bariol-Regular" size:10];
+    secondLabel.textColor = [UIColor colorWithRed:234.0f/255.0f green:73.0f/255.0f blue:85.0f/255.0f alpha:1.0f];
+    [cell.contentView addSubview:secondLabel];
+    
+    imageLayer.mask = mask;
+
+    
+    
+    //assign content
+    mainLabel.text = [NSString stringWithFormat:@"%@ %@",user.voornaam,user.naam];
+    secondLabel.text = @"Hey hoe gaat ...";
+    photo.image = image;
     
     return cell;
 }

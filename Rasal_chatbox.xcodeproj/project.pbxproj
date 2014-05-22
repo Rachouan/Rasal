@@ -71,6 +71,9 @@
 		04580C3C192D0787008B0A2C /* FatFrankSample-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FatFrankSample-Regular.otf"; sourceTree = "<group>"; };
 		04C867F5192D19EF0035FEB1 /* UserOverviewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserOverviewTableViewController.h; sourceTree = "<group>"; };
 		04C867F6192D19EF0035FEB1 /* UserOverviewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserOverviewTableViewController.m; sourceTree = "<group>"; };
+		527D6D74192E818B001B7BEA /* Bariol_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Regular.otf; sourceTree = "<group>"; };
+		527D6D75192E818B001B7BEA /* Bariol-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bariol-Bold.otf"; sourceTree = "<group>"; };
+		527D6D76192E818B001B7BEA /* Bariol-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bariol-Light.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,7 @@
 		04580BDE192CDDA4008B0A2C = {
 			isa = PBXGroup;
 			children = (
+				527D6D77192E818F001B7BEA /* fonts */,
 				04580BF0192CDDA4008B0A2C /* Rasal_chatbox */,
 				04580C09192CDDA4008B0A2C /* Rasal_chatboxTests */,
 				04580BE9192CDDA4008B0A2C /* Frameworks */,
@@ -221,6 +225,16 @@
 				04580C24192CE05F008B0A2C /* UserOverviewTableViewCell.m */,
 			);
 			name = cell;
+			sourceTree = "<group>";
+		};
+		527D6D77192E818F001B7BEA /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				527D6D74192E818B001B7BEA /* Bariol_Regular.otf */,
+				527D6D75192E818B001B7BEA /* Bariol-Bold.otf */,
+				527D6D76192E818B001B7BEA /* Bariol-Light.otf */,
+			);
+			name = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

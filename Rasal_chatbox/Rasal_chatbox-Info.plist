@@ -4,6 +4,9 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Bariol_Regular.otf</string>
+		<string>Bariol-Bold.otf</string>
+		<string>Bariol-light.otf</string>
 		<string>FatFrankSample-Regular.otf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
