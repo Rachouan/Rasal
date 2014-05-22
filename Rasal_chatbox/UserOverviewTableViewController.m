@@ -52,7 +52,7 @@
     
     self.tableView.delegate = self;
     
-     UIEdgeInsets inset = UIEdgeInsetsMake(20, 0, 0, 0);
+     UIEdgeInsets inset = UIEdgeInsetsMake(0, 0, 0, 0);
      self.tableView.contentInset = inset;
      [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 120, 0, 20)];
     
@@ -142,13 +142,19 @@
     [cell.contentView addSubview:secondLabel];
     
     imageLayer.mask = mask;
+    
+    UIImage *featherImg = [UIImage imageNamed:@"feather"];
 
+    
+    UIImageView *feather = [[UIImageView alloc] initWithFrame:CGRectMake(cell.frame.size.width - featherImg.size.width - 20, (cell.frame.size.height - featherImg.size.height)/2, featherImg.size.width, featherImg.size.height)];
+    feather.image = featherImg;
+    
+    [cell.contentView addSubview:feather];
     
     
     //assign content
     mainLabel.text = [NSString stringWithFormat:@"%@ %@",user.voornaam,user.naam];
     secondLabel.text = @"Hey hoe gaat ...";
-    photo.image = image;
     
     return cell;
 }
