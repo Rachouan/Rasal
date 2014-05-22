@@ -16,5 +16,6 @@
 @interface UserOverviewTableViewController : UITableViewController <UITableViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *users;
+@property (nonatomic,strong)UIRefreshControl * refreshControl;
 
 @end

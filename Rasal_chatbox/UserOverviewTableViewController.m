@@ -43,6 +43,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView setSeparatorColor:[UIColor colorWithRed:221.0f/255.0f green:222.0f/255.0f blue:219.0f/255.0f alpha:1.0f]];
     return 100.0f;
 }
 
@@ -52,12 +53,21 @@
     
     self.tableView.delegate = self;
     
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+    
      UIEdgeInsets inset = UIEdgeInsetsMake(0, 0, 0, 0);
      self.tableView.contentInset = inset;
      [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 120, 0, 20)];
     
     [self.tableView registerClass:[UserOverviewTableViewCell class] forCellReuseIdentifier:@"userCell"];
     //[self.tableView setSeparatorColor:[UIColor colorWithRed:0.94 green:0.98 blue:0.45 alpha:1]];
+}
+- (void)refreshTable {
+    //TODO: refresh your data
+    [self.refreshControl endRefreshing];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -109,6 +119,13 @@
     }
     
     UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", user.profilePic]];
+    
+    UIView *customColorView = [[UIView alloc] init];
+    customColorView.backgroundColor = [UIColor colorWithRed:239/255.0
+                                                      green:235/255.0
+                                                       blue:236/255.0
+                                                      alpha:0.5];
+    cell.selectedBackgroundView =  customColorView;
     
 
     UIImageView *photo = [[UIImageView alloc] initWithFrame:CGRectMake(225.0, 0.0, image.size.width, image.size.height)];
