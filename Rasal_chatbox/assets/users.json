@@ -1,0 +1,32 @@
+[
+	{
+		"id": 0,
+		"naam": "Jacques",
+		"voornaam": "Frederik",
+		"profilePic": "1"
+	},
+	{
+		"id": 1,
+		"naam": "Vanompel",
+		"voornaam": "Evelyn",
+		"profilePic": "2"
+	},
+	{
+		"id": 2,
+		"naam": "De Sutter",
+		"voornaam": "Jack",
+		"profilePic": "3"
+	},
+	{
+		"id": 3,
+		"naam": "Moeremans",
+		"voornaam": "Tom",
+		"profilePic": "4"
+	},
+	{
+		"id": 4,
+		"naam": "Tralia",
+		"voornaam": "Punisheshka",
+		"profilePic": "5"
+	}
+]
