@@ -116,19 +116,6 @@
     
     // Configure the cell...
     User *user = [self.users objectAtIndex:indexPath.row];
-
-    /*cell.contentScaleFactor = 30;
-    cell.textLabel.text = user.voornaam;
-    cell.textLabel.font = [UIFont fontWithName:@"AvenirNext-MediumItalic" size:20];
-    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-    cell.textLabel.textColor = [UIColor colorWithRed:0.94 green:0.98 blue:0.45 alpha:1];
-    cell.imageView.layer.masksToBounds = YES;
-    cell.imageView.layer.cornerRadius = 40;
-    cell.imageView.layer.position = CGPointMake(500, 300);
-    cell.imageView.layer.borderWidth = 5;
-    cell.imageView.layer.borderColor = [UIColor colorWithHue:0.18 saturation:0.54 brightness:0.98 alpha:1].CGColor;
-    cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"message_icon"]];
-    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", user.profilePic]];*/
     
     //create your own labels and image view object, specify the frame
     
@@ -170,7 +157,6 @@
     mask.path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, 70, 70)].CGPath;
     mask.position = CGPointMake(imageLayer.bounds.origin.x + (imageLayer.frame.size.width)/2, imageLayer.bounds.origin.y + (imageLayer.frame.size.height)/2);
     mask.bounds = CGRectMake(0, 0, 70, 70);
-
     
     if(!user.active){
         mask.borderColor = [UIColor colorWithHue:0.18 saturation:0.54 brightness:0.98 alpha:.3].CGColor;

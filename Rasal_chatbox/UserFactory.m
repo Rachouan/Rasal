@@ -14,7 +14,7 @@
     
     User *user = [[User alloc] init];
     
-    user.identifier = [[dictionary objectForKey:@"identifier"] integerValue];
+    user.identifier = [[dictionary objectForKey:@"id"] integerValue];
     user.naam = [dictionary objectForKey:@"naam"];
     user.voornaam = [dictionary objectForKey:@"voornaam"];
     user.profilePic = [dictionary objectForKey:@"profilePic"];

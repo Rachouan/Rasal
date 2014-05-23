@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "ChatView.h"
 #import "User.h"
+#import "Messages.h"
+#import "MessageFactory.h"
 
 @interface ChatViewController : UIViewController
 
 @property (nonatomic, strong) ChatView *view;
+@property (nonatomic, strong) NSMutableArray *messages;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andChatVenster:(User*)selectedUser;
 

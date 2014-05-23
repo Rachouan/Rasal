@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04290C3C192F861C00C1325C /* Messages.m in Sources */ = {isa = PBXBuildFile; fileRef = 04290C3B192F861C00C1325C /* Messages.m */; };
+		04290C40192F890400C1325C /* MessageFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 04290C3F192F890400C1325C /* MessageFactory.m */; };
+		04290C42192F8B5C00C1325C /* messages.json in Resources */ = {isa = PBXBuildFile; fileRef = 04290C41192F8B5C00C1325C /* messages.json */; };
 		04580BEB192CDDA4008B0A2C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04580BEA192CDDA4008B0A2C /* Foundation.framework */; };
 		04580BED192CDDA4008B0A2C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04580BEC192CDDA4008B0A2C /* CoreGraphics.framework */; };
 		04580BEF192CDDA4008B0A2C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04580BEE192CDDA4008B0A2C /* UIKit.framework */; };
@@ -40,6 +43,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04290C3A192F861C00C1325C /* Messages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Messages.h; sourceTree = "<group>"; };
+		04290C3B192F861C00C1325C /* Messages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Messages.m; sourceTree = "<group>"; };
+		04290C3E192F890400C1325C /* MessageFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageFactory.h; sourceTree = "<group>"; };
+		04290C3F192F890400C1325C /* MessageFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageFactory.m; sourceTree = "<group>"; };
+		04290C41192F8B5C00C1325C /* messages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = messages.json; sourceTree = "<group>"; };
 		04580BE7192CDDA4008B0A2C /* Rasall_chatbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rasall_chatbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04580BEA192CDDA4008B0A2C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		04580BEC192CDDA4008B0A2C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -101,6 +109,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04290C38192F85D600C1325C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				04290C39192F85E000C1325C /* Messages */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		04290C39192F85E000C1325C /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				04290C3A192F861C00C1325C /* Messages.h */,
+				04290C3B192F861C00C1325C /* Messages.m */,
+				04290C3D192F88F200C1325C /* MessageFactory */,
+			);
+			name = Messages;
+			sourceTree = "<group>";
+		};
+		04290C3D192F88F200C1325C /* MessageFactory */ = {
+			isa = PBXGroup;
+			children = (
+				04290C3E192F890400C1325C /* MessageFactory.h */,
+				04290C3F192F890400C1325C /* MessageFactory.m */,
+			);
+			name = MessageFactory;
+			sourceTree = "<group>";
+		};
 		04580BDE192CDDA4008B0A2C = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +184,7 @@
 		04580BF1192CDDA4008B0A2C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				04290C41192F8B5C00C1325C /* messages.json */,
 				04580C3C192D0787008B0A2C /* FatFrankSample-Regular.otf */,
 				04580C26192CE9DE008B0A2C /* users.json */,
 				04580BF2192CDDA4008B0A2C /* Rasall_chatbox-Info.plist */,
@@ -214,6 +250,7 @@
 				04580C33192CEFFD008B0A2C /* ChatViewController.m */,
 				04580C35192CF006008B0A2C /* ChatView.h */,
 				04580C36192CF006008B0A2C /* ChatView.m */,
+				04290C38192F85D600C1325C /* Data */,
 			);
 			name = chat_view;
 			sourceTree = "<group>";
@@ -313,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04580C3B192D0302008B0A2C /* images.xcassets in Resources */,
+				04290C42192F8B5C00C1325C /* messages.json in Resources */,
 				04580C30192CEE75008B0A2C /* users.json in Resources */,
 				04580BF5192CDDA4008B0A2C /* InfoPlist.strings in Resources */,
 			);
@@ -339,7 +377,9 @@
 				04C867F7192D19EF0035FEB1 /* UserOverviewTableViewController.m in Sources */,
 				04580BF7192CDDA4008B0A2C /* main.m in Sources */,
 				04580C25192CE05F008B0A2C /* UserOverviewTableViewCell.m in Sources */,
+				04290C40192F890400C1325C /* MessageFactory.m in Sources */,
 				04580C34192CEFFD008B0A2C /* ChatViewController.m in Sources */,
+				04290C3C192F861C00C1325C /* Messages.m in Sources */,
 				04580C2F192CEAAC008B0A2C /* UserFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

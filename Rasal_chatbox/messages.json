@@ -1,0 +1,30 @@
+[
+	{
+		"id": 1,
+		"date": "2014-05-23 13:51:45 +0000",
+		"message": "Hallo Rachouan, alles goed met jou ? :p Met mij super. Dank u wel. Groetjes aan heel de familie. Dag xxx",
+		"user_id": 0,
+        "compagnion_id":1
+	},
+	{
+		"id": 2,
+		"date": "2014-05-23 19:51:45 +0000",
+		"message": "Hallo Vader, alles goed met Dank u wel. Groetjes aan heel de familie. Dag xxx",
+		"user_id": 1,
+        "compagnion_id":4
+	},
+	{
+		"id": 3,
+		"date": "2014-05-23 23:52:56 +0000",
+		"message": "Hallo Moeder, alletjes aan heel de familie. Dag xxx",
+		"user_id": 1,
+        "compagnion_id":3
+	},
+	{
+		"id": 4,
+		"date": "2014-05-23 20:00:45 +0000",
+		"message": "Hallo Salva, alles gheel de familie. Dag xxx",
+		"user_id": 0,
+        "compagnion_id":1
+	},
+]

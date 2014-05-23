@@ -20,6 +20,34 @@
     if (self) {
         // Custom initialization
         self.title = [NSString stringWithFormat:@"%@", selectedUser.voornaam];
+        self.messages = [NSMutableArray array];
+        
+        NSDate *currentDate = [[NSDate date] init];
+        NSLog(@"%@", currentDate);
+        
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"messages" ofType:@"json"];
+        NSData *jsonData = [NSData dataWithContentsOfFile:path];
+        NSError *error = nil;
+        
+        NSArray *loadedData = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+        
+        if(!error){
+            //NSLog(@"%@", loadedData);
+        }else{
+            NSLog(@"Error Json");
+        }
+        
+        for (NSDictionary *dict in loadedData) {
+            Messages *message = [MessageFactory createMessageWithDictionarry:dict];
+            
+            if (selectedUser.identifier == message.compagnion_id) {
+                [self.messages addObject:message];
+                
+                
+                
+            }
+        }
+        
     }
     return self;
 }
