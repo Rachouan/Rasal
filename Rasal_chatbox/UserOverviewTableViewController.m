@@ -27,7 +27,6 @@
         NSURL *url = [NSURL URLWithString:path];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         
-        NSError *error = nil;
         
         
         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
@@ -38,7 +37,28 @@
             NSLog(@"Loaded data");
             
             
-            self.loadedData = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:&error];
+            NSError *error = nil;
+            
+            
+            NSDictionary *loadedData = (NSDictionary *)responseObject;
+            
+            if(!error){
+                //NSLog(@"%@", loadedData);
+                
+                for (NSDictionary *dict in loadedData) {
+                    User *user = [UserFactory createUserWithDictionary:dict];
+                    
+                    NSLog(@"%@",dict);
+                    
+                    [self.users addObject:user];
+                    
+                    [self.tableView reloadData];
+                }
+            }else{
+                NSLog(@"Error Json");
+                
+                
+            }
             
             
         }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -48,29 +68,7 @@
         [operation start];
         
         
-        //NSString *path = [[NSBundle mainBundle] pathForResource:@"users" ofType:@"json"];
-        /*NSData *jsonData = [NSData dataWithContentsOfFile:path];
-        
-        NSArray *loadedData = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];*/
-        
-        if(!error){
-            NSLog(@"%@", self.loadedData);
-            
-            for (NSDictionary *dict in self.loadedData) {
-                User *user = [UserFactory createUserWithDictionary:dict];
-                [self.users addObject:user];
-            }
-        }else{
-            NSLog(@"Error Json");
-        }
-        
-        /*for (NSString *fontFamilies in [UIFont familyNames]) {
-            for (NSString *fontFamilie in [UIFont fontNamesForFamilyName:fontFamilies]) {
-                NSLog(@"%@",fontFamilie);
-            }
-        }*/
-        
-        
+        NSLog(@"%@", self.users);
         
         
         [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:255.0/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
@@ -109,11 +107,7 @@
     self.refreshControl = [[UIRefreshControl alloc]init];
     [self.tableView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
-    
-     UIEdgeInsets inset = UIEdgeInsetsMake(0, 0, 0, 0);
-     self.tableView.contentInset = inset;
-     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 120, 0, 20)];
-    
+
     [self.tableView registerClass:[UserOverviewTableViewCell class] forCellReuseIdentifier:@"userCell"];
     //[self.tableView setSeparatorColor:[UIColor colorWithRed:0.94 green:0.98 blue:0.45 alpha:1]];
 }
