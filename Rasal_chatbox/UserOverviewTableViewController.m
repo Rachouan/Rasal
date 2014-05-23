@@ -22,14 +22,44 @@
         self.title = @"Rasal";
         self.users = [NSMutableArray array];
         
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"users" ofType:@"json"];
-        NSData *jsonData = [NSData dataWithContentsOfFile:path];
+        
+        NSString *path =@"http://volpesalvatore.be/rasal/api/users";
+        NSURL *url = [NSURL URLWithString:path];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        
         NSError *error = nil;
         
-        NSArray *loadedData = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+        
+        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+        
+        operation.responseSerializer = [AFJSONResponseSerializer serializer];
+        
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"Loaded data");
+            
+            
+            self.loadedData = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:&error];
+            
+            
+        }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error Loading data");
+        }];
+        
+        [operation start];
+        
+        
+        //NSString *path = [[NSBundle mainBundle] pathForResource:@"users" ofType:@"json"];
+        /*NSData *jsonData = [NSData dataWithContentsOfFile:path];
+        
+        NSArray *loadedData = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];*/
         
         if(!error){
-            NSLog(@"%@", loadedData);
+            NSLog(@"%@", self.loadedData);
+            
+            for (NSDictionary *dict in self.loadedData) {
+                User *user = [UserFactory createUserWithDictionary:dict];
+                [self.users addObject:user];
+            }
         }else{
             NSLog(@"Error Json");
         }
@@ -40,10 +70,7 @@
             }
         }*/
         
-        for (NSDictionary *dict in loadedData) {
-            User *user = [UserFactory createUserWithDictionary:dict];
-            [self.users addObject:user];
-        }
+        
         
         
         [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:255.0/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
