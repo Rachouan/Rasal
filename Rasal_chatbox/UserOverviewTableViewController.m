@@ -156,9 +156,6 @@
     imageLayer.frame = CGRectMake(0, 0, 100, 100);
     [imageLayer setContents:(id)[photo.image CGImage]];
     
-    if(!user.active){
-        
-    }
     
     [cell.contentView.layer addSublayer:imageLayer];
     
@@ -170,6 +167,12 @@
     mask.cornerRadius = 40;
     mask.position = CGPointMake(imageLayer.bounds.origin.x + (imageLayer.frame.size.width)/2, imageLayer.bounds.origin.y + (imageLayer.frame.size.height)/2);
     mask.bounds = CGRectMake(0, 0, 70, 70);
+    
+    
+    if(!user.active){
+        
+        mask.borderColor = [UIColor colorWithHue:0.18 saturation:0.54 brightness:0.98 alpha:.3].CGColor;
+    }
     
     
     [cell.contentView.layer addSublayer:mask];
