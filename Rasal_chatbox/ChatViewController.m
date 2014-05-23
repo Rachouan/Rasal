@@ -22,10 +22,10 @@
         self.title = [NSString stringWithFormat:@"%@", selectedUser.voornaam];
         self.messages = [NSMutableArray array];
         
-        int connected_user = 0;
-        
         NSDate *currentDate = [[NSDate date] init];
         NSLog(@"%@", currentDate);
+        
+        
         
         NSString *path = [[NSBundle mainBundle] pathForResource:@"messages" ofType:@"json"];
         NSData *jsonData = [NSData dataWithContentsOfFile:path];

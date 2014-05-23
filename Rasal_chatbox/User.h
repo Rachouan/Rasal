@@ -12,8 +12,11 @@
 
 @property (nonatomic, strong) NSString *naam;
 @property (nonatomic, strong) NSString *voornaam;
+@property (nonatomic, strong) NSString *email;
+@property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *profilePic;
-@property (nonatomic)Boolean active;
+@property (nonatomic, strong) NSDate *creation_date;
+@property (nonatomic) Boolean active;
 
 @property (nonatomic) NSInteger identifier;
 

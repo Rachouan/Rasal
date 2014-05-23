@@ -34,12 +34,11 @@
             NSLog(@"Error Json");
         }
         
-        for (NSString *fontFamilies in [UIFont familyNames]) {
-            
+        /*for (NSString *fontFamilies in [UIFont familyNames]) {
             for (NSString *fontFamilie in [UIFont fontNamesForFamilyName:fontFamilies]) {
                 NSLog(@"%@",fontFamilie);
             }
-        }
+        }*/
         
         for (NSDictionary *dict in loadedData) {
             User *user = [UserFactory createUserWithDictionary:dict];
