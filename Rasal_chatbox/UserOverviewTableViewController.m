@@ -41,6 +41,7 @@
         
         
         [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:255.0/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
+        [[UINavigationBar appearance]setTintColor:[UIColor colorWithRed:234.0f/255.0f green:73.0f/255.0f blue:85.0f/255.0f alpha:1.0f]];
         
         NSShadow *shadow = [[NSShadow alloc] init];
         shadow.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0];
