@@ -34,6 +34,13 @@
             NSLog(@"Error Json");
         }
         
+        for (NSString *fontFamilies in [UIFont familyNames]) {
+            
+            for (NSString *fontFamilie in [UIFont fontNamesForFamilyName:fontFamilies]) {
+                NSLog(@"%@",fontFamilie);
+            }
+        }
+        
         for (NSDictionary *dict in loadedData) {
             User *user = [UserFactory createUserWithDictionary:dict];
             [self.users addObject:user];
@@ -49,7 +56,7 @@
         [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                                                [UIColor colorWithRed:234.0f/255.0f green:73.0f/255.0f blue:85.0f/255.0f alpha:1.0f], NSForegroundColorAttributeName,
                                                                shadow, NSShadowAttributeName,
-                                                               [UIFont fontWithName:@"Bariol-Regular" size:21.0], NSFontAttributeName, nil]];
+                                                               [UIFont fontWithName:@"Avenir-Medium" size:21.0], NSFontAttributeName, nil]];
         
         self.navigationController.navigationBar.translucent = NO;
         
@@ -166,13 +173,13 @@
     [cell.contentView.layer addSublayer:mask];
     
     
-    UILabel *mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(mask.bounds.origin.x + mask.bounds.size.width + 40, (cell.frame.size.height/2 - 15), 220.0, 15.0)];
-    mainLabel.font = [UIFont fontWithName:@"Bariol-Regular" size:20];
+    UILabel *mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(mask.bounds.origin.x + mask.bounds.size.width + 40, (cell.frame.size.height/2 - 15), 220.0, 20)];
+    mainLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:16];
     mainLabel.textColor = [UIColor colorWithRed:17.0f/255.0f green:46.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
     [cell.contentView addSubview:mainLabel];
     
     UILabel *secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(mask.bounds.origin.x + mask.bounds.size.width + 40, (cell.frame.size.height/2 + 5), 220.0, 20)];
-    secondLabel.font = [UIFont fontWithName:@"Bariol-Regular" size:10];
+    secondLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:14];
     secondLabel.textColor = [UIColor colorWithRed:234.0f/255.0f green:73.0f/255.0f blue:85.0f/255.0f alpha:1.0f];
     [cell.contentView addSubview:secondLabel];
     
