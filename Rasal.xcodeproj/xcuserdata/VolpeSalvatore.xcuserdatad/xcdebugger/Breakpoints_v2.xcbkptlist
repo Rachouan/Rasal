@@ -22,29 +22,29 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[AppDelegate userOverviewTVC]"
-                  moduleName = "Rasal_chatbox"
-                  urlString = "file:///Users/VolpeSalvatore/Documents/ZELF/iOS/Rasal_chatbox/Rasal_chatbox/AppDelegate.h"
-                  timestampString = "422384907.166247"
+                  symbolName = "-[AppDelegate navController]"
+                  moduleName = "Rasall_chatbox"
+                  urlString = "file:///Users/VolpeSalvatore/Documents/ZELF/iOS/GitHub/Rasal/Rasal_chatbox/AppDelegate.h"
+                  timestampString = "422559595.882687"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
-                  offsetFromSymbolStart = "16">
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "24">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[AppDelegate setUserOverviewTVC:]"
-                  moduleName = "Rasal_chatbox"
-                  urlString = "file:///Users/VolpeSalvatore/Documents/ZELF/iOS/Rasal_chatbox/Rasal_chatbox/AppDelegate.h"
-                  timestampString = "422384907.1664"
+                  symbolName = "-[AppDelegate setNavController:]"
+                  moduleName = "Rasall_chatbox"
+                  urlString = "file:///Users/VolpeSalvatore/Documents/ZELF/iOS/GitHub/Rasal/Rasal_chatbox/AppDelegate.h"
+                  timestampString = "422559595.882887"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
-                  offsetFromSymbolStart = "22">
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "31">
                </Location>
             </Locations>
          </BreakpointContent>
