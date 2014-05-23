@@ -16,6 +16,11 @@
     if (self) {
         // Initialization code
         self.backgroundColor = [UIColor whiteColor];
+        
+        self.user_message_lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 64, frame.size.width, 30)];
+        [self.user_message_lbl setBackgroundColor:[UIColor redColor]];
+        [self addSubview:self.user_message_lbl];
+        
     }
     return self;
 }

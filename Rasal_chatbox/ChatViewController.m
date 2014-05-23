@@ -22,6 +22,8 @@
         self.title = [NSString stringWithFormat:@"%@", selectedUser.voornaam];
         self.messages = [NSMutableArray array];
         
+        int connected_user = 0;
+        
         NSDate *currentDate = [[NSDate date] init];
         NSLog(@"%@", currentDate);
         
@@ -39,12 +41,8 @@
         
         for (NSDictionary *dict in loadedData) {
             Messages *message = [MessageFactory createMessageWithDictionarry:dict];
-            
             if (selectedUser.identifier == message.compagnion_id) {
-                [self.messages addObject:message];
-                
-                
-                
+                [self.messages addObject:message];                
             }
         }
         

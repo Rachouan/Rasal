@@ -10,4 +10,7 @@
 
 @interface ChatView : UIView
 
+@property (nonatomic, strong) UILabel *user_message_lbl;
+@property (nonatomic, strong) UILabel *compagnion_message_lbl;
+
 @end
