@@ -157,10 +157,10 @@
     
     CALayer * imageLayer = [CALayer layer];
     imageLayer.frame = CGRectMake(0, 0, 100, 100);
-    imageLayer.contents = (__bridge id)(photo.image.CGImage);
+    [imageLayer setContents:(id)[photo.image CGImage]];
     
     if(!user.active){
-        imageLayer.contents = (__bridge id)(inactive.image.CGImage);
+        [imageLayer setContents:(id)[inactive.image CGImage]];
     }
     
     [cell.contentView.layer addSublayer:imageLayer];
