@@ -42,8 +42,23 @@
         
         [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:234.0f/255.0f green:73.0f/255.0f blue:85.0f/255.0f alpha:1.0f]];
         
+        NSShadow *shadow = [[NSShadow alloc] init];
+        shadow.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0];
+        shadow.shadowOffset = CGSizeMake(0, 0);
+        [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+                                                               [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0], NSForegroundColorAttributeName,
+                                                               shadow, NSShadowAttributeName,
+                                                               [UIFont fontWithName:@"Bariol-Regular" size:21.0], NSFontAttributeName, nil]];
+        
+        self.navigationController.navigationBar.translucent = NO;
+        
     }
     return self;
+}
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    NSLog(@"STATUS BAR CHANGED");
+    return UIStatusBarStyleLightContent;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -54,7 +69,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self setNeedsStatusBarAppearanceUpdate];
     self.tableView.delegate = self;
     
     self.refreshControl = [[UIRefreshControl alloc]init];
@@ -100,9 +115,7 @@
     
     // Configure the cell...
     User *user = [self.users objectAtIndex:indexPath.row];
-    
-    NSLog(@"hier komt die");
-    
+
     /*cell.contentScaleFactor = 30;
     cell.textLabel.text = user.voornaam;
     cell.textLabel.font = [UIFont fontWithName:@"AvenirNext-MediumItalic" size:20];
@@ -125,6 +138,7 @@
     [cell.contentView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
     
     UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", user.profilePic]];
+    UIImage *inactiveImg = [UIImage imageNamed:[NSString stringWithFormat:@"offline"]];
     
     UIView *customColorView = [[UIView alloc] init];
     customColorView.backgroundColor = [UIColor colorWithRed:239/255.0
@@ -137,10 +151,17 @@
     UIImageView *photo = [[UIImageView alloc] initWithFrame:CGRectMake(225.0, 0.0, image.size.width, image.size.height)];
     photo.image = image;
     
+    UIImageView *inactive = [[UIImageView alloc] initWithFrame:CGRectMake(225.0, 0.0, inactiveImg.size.width, inactiveImg.size.height)];
+    inactive.image = inactiveImg;
+    
     
     CALayer * imageLayer = [CALayer layer];
     imageLayer.frame = CGRectMake(0, 0, 100, 100);
     imageLayer.contents = (__bridge id)(photo.image.CGImage);
+    
+    if(!user.active){
+        imageLayer.contents = (__bridge id)(inactive.image.CGImage);
+    }
     
     [cell.contentView.layer addSublayer:imageLayer];
     
@@ -181,7 +202,6 @@
     
     return cell;
 }
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     

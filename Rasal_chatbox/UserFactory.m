@@ -18,6 +18,7 @@
     user.naam = [dictionary objectForKey:@"naam"];
     user.voornaam = [dictionary objectForKey:@"voornaam"];
     user.profilePic = [dictionary objectForKey:@"profilePic"];
+    user.active = [[dictionary objectForKey:@"active"] boolValue];
     
     return user;
 }

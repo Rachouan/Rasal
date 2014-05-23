@@ -3,30 +3,35 @@
 		"id": 0,
 		"naam": "Jacques",
 		"voornaam": "Frederik",
-		"profilePic": "1"
+		"profilePic": "1",
+        "active":true
 	},
 	{
 		"id": 1,
 		"naam": "Vanompel",
 		"voornaam": "Evelyn",
-		"profilePic": "2"
+		"profilePic": "2",
+        "active":true
 	},
 	{
 		"id": 2,
 		"naam": "De Sutter",
 		"voornaam": "Jack",
-		"profilePic": "3"
+		"profilePic": "3",
+        "active":false
 	},
 	{
 		"id": 3,
 		"naam": "Moeremans",
 		"voornaam": "Tom",
-		"profilePic": "4"
+		"profilePic": "4",
+        "active":true
 	},
 	{
 		"id": 4,
 		"naam": "Punisheshka",
 		"voornaam": "Tralia",
-		"profilePic": "5"
+		"profilePic": "5",
+        "active":false
 	}
 ]

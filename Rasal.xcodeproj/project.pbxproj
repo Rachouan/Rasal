@@ -40,19 +40,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		04580BE7192CDDA4008B0A2C /* Rasal_chatbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rasal_chatbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04580BE7192CDDA4008B0A2C /* Rasall_chatbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rasall_chatbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04580BEA192CDDA4008B0A2C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		04580BEC192CDDA4008B0A2C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		04580BEE192CDDA4008B0A2C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		04580BF2192CDDA4008B0A2C /* Rasal_chatbox-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Rasal_chatbox-Info.plist"; sourceTree = "<group>"; };
+		04580BF2192CDDA4008B0A2C /* Rasall_chatbox-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Rasall_chatbox-Info.plist"; sourceTree = "<group>"; };
 		04580BF4192CDDA4008B0A2C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		04580BF6192CDDA4008B0A2C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		04580BF8192CDDA4008B0A2C /* Rasal_chatbox-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Rasal_chatbox-Prefix.pch"; sourceTree = "<group>"; };
+		04580BF8192CDDA4008B0A2C /* Rasall_chatbox-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Rasall_chatbox-Prefix.pch"; sourceTree = "<group>"; };
 		04580BF9192CDDA4008B0A2C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		04580BFA192CDDA4008B0A2C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		04580C02192CDDA4008B0A2C /* Rasal_chatboxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Rasal_chatboxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04580C02192CDDA4008B0A2C /* Rasall_chatboxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Rasall_chatboxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04580C03192CDDA4008B0A2C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		04580C0B192CDDA4008B0A2C /* Rasal_chatboxTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Rasal_chatboxTests-Info.plist"; sourceTree = "<group>"; };
+		04580C0B192CDDA4008B0A2C /* Rasall_chatboxTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Rasall_chatboxTests-Info.plist"; sourceTree = "<group>"; };
 		04580C0D192CDDA4008B0A2C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		04580C0F192CDDA4008B0A2C /* Rasal_chatboxTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Rasal_chatboxTests.m; sourceTree = "<group>"; };
 		04580C23192CE05F008B0A2C /* UserOverviewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserOverviewTableViewCell.h; sourceTree = "<group>"; };
@@ -115,8 +115,8 @@
 		04580BE8192CDDA4008B0A2C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				04580BE7192CDDA4008B0A2C /* Rasal_chatbox.app */,
-				04580C02192CDDA4008B0A2C /* Rasal_chatboxTests.xctest */,
+				04580BE7192CDDA4008B0A2C /* Rasall_chatbox.app */,
+				04580C02192CDDA4008B0A2C /* Rasall_chatboxTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -151,10 +151,10 @@
 			children = (
 				04580C3C192D0787008B0A2C /* FatFrankSample-Regular.otf */,
 				04580C26192CE9DE008B0A2C /* users.json */,
-				04580BF2192CDDA4008B0A2C /* Rasal_chatbox-Info.plist */,
+				04580BF2192CDDA4008B0A2C /* Rasall_chatbox-Info.plist */,
 				04580BF3192CDDA4008B0A2C /* InfoPlist.strings */,
 				04580BF6192CDDA4008B0A2C /* main.m */,
-				04580BF8192CDDA4008B0A2C /* Rasal_chatbox-Prefix.pch */,
+				04580BF8192CDDA4008B0A2C /* Rasall_chatbox-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -171,7 +171,7 @@
 		04580C0A192CDDA4008B0A2C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				04580C0B192CDDA4008B0A2C /* Rasal_chatboxTests-Info.plist */,
+				04580C0B192CDDA4008B0A2C /* Rasall_chatboxTests-Info.plist */,
 				04580C0C192CDDA4008B0A2C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -240,9 +240,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		04580BE6192CDDA4008B0A2C /* Rasal_chatbox */ = {
+		04580BE6192CDDA4008B0A2C /* Rasall_chatbox */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 04580C13192CDDA4008B0A2C /* Build configuration list for PBXNativeTarget "Rasal_chatbox" */;
+			buildConfigurationList = 04580C13192CDDA4008B0A2C /* Build configuration list for PBXNativeTarget "Rasall_chatbox" */;
 			buildPhases = (
 				04580BE3192CDDA4008B0A2C /* Sources */,
 				04580BE4192CDDA4008B0A2C /* Frameworks */,
@@ -252,14 +252,14 @@
 			);
 			dependencies = (
 			);
-			name = Rasal_chatbox;
+			name = Rasall_chatbox;
 			productName = Rasal_chatbox;
-			productReference = 04580BE7192CDDA4008B0A2C /* Rasal_chatbox.app */;
+			productReference = 04580BE7192CDDA4008B0A2C /* Rasall_chatbox.app */;
 			productType = "com.apple.product-type.application";
 		};
-		04580C01192CDDA4008B0A2C /* Rasal_chatboxTests */ = {
+		04580C01192CDDA4008B0A2C /* Rasall_chatboxTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 04580C16192CDDA4008B0A2C /* Build configuration list for PBXNativeTarget "Rasal_chatboxTests" */;
+			buildConfigurationList = 04580C16192CDDA4008B0A2C /* Build configuration list for PBXNativeTarget "Rasall_chatboxTests" */;
 			buildPhases = (
 				04580BFE192CDDA4008B0A2C /* Sources */,
 				04580BFF192CDDA4008B0A2C /* Frameworks */,
@@ -270,9 +270,9 @@
 			dependencies = (
 				04580C08192CDDA4008B0A2C /* PBXTargetDependency */,
 			);
-			name = Rasal_chatboxTests;
+			name = Rasall_chatboxTests;
 			productName = Rasal_chatboxTests;
-			productReference = 04580C02192CDDA4008B0A2C /* Rasal_chatboxTests.xctest */;
+			productReference = 04580C02192CDDA4008B0A2C /* Rasall_chatboxTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -289,7 +289,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 04580BE2192CDDA4008B0A2C /* Build configuration list for PBXProject "Rasal_chatbox" */;
+			buildConfigurationList = 04580BE2192CDDA4008B0A2C /* Build configuration list for PBXProject "Rasal" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -301,8 +301,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				04580BE6192CDDA4008B0A2C /* Rasal_chatbox */,
-				04580C01192CDDA4008B0A2C /* Rasal_chatboxTests */,
+				04580BE6192CDDA4008B0A2C /* Rasall_chatbox */,
+				04580C01192CDDA4008B0A2C /* Rasall_chatboxTests */,
 			);
 		};
 /* End PBXProject section */
@@ -357,7 +357,7 @@
 /* Begin PBXTargetDependency section */
 		04580C08192CDDA4008B0A2C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 04580BE6192CDDA4008B0A2C /* Rasal_chatbox */;
+			target = 04580BE6192CDDA4008B0A2C /* Rasall_chatbox */;
 			targetProxy = 04580C07192CDDA4008B0A2C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -458,9 +458,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Rasal_chatbox/Rasal_chatbox-Prefix.pch";
-				INFOPLIST_FILE = "Rasal_chatbox/Rasal_chatbox-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Rasal_chatbox/Rasall_chatbox-Prefix.pch";
+				INFOPLIST_FILE = "Rasal_chatbox/Rasall_chatbox-Info.plist";
+				PRODUCT_NAME = Rasall_chatbox;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -471,9 +471,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Rasal_chatbox/Rasal_chatbox-Prefix.pch";
-				INFOPLIST_FILE = "Rasal_chatbox/Rasal_chatbox-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Rasal_chatbox/Rasall_chatbox-Prefix.pch";
+				INFOPLIST_FILE = "Rasal_chatbox/Rasall_chatbox-Info.plist";
+				PRODUCT_NAME = Rasall_chatbox;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -493,8 +493,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Rasal_chatboxTests/Rasal_chatboxTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "Rasal_chatboxTests/Rasall_chatboxTests-Info.plist";
+				PRODUCT_NAME = Rasall_chatboxTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -511,8 +511,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rasal_chatbox/Rasal_chatbox-Prefix.pch";
-				INFOPLIST_FILE = "Rasal_chatboxTests/Rasal_chatboxTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "Rasal_chatboxTests/Rasall_chatboxTests-Info.plist";
+				PRODUCT_NAME = Rasall_chatboxTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -521,7 +521,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		04580BE2192CDDA4008B0A2C /* Build configuration list for PBXProject "Rasal_chatbox" */ = {
+		04580BE2192CDDA4008B0A2C /* Build configuration list for PBXProject "Rasal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04580C11192CDDA4008B0A2C /* Debug */,
@@ -530,7 +530,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		04580C13192CDDA4008B0A2C /* Build configuration list for PBXNativeTarget "Rasal_chatbox" */ = {
+		04580C13192CDDA4008B0A2C /* Build configuration list for PBXNativeTarget "Rasall_chatbox" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04580C14192CDDA4008B0A2C /* Debug */,
@@ -539,7 +539,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		04580C16192CDDA4008B0A2C /* Build configuration list for PBXNativeTarget "Rasal_chatboxTests" */ = {
+		04580C16192CDDA4008B0A2C /* Build configuration list for PBXNativeTarget "Rasall_chatboxTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04580C17192CDDA4008B0A2C /* Debug */,

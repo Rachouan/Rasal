@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "04580BE6192CDDA4008B0A2C"
                BuildableName = "Rasal_chatbox.app"
-               BlueprintName = "Rasal_chatbox"
-               ReferencedContainer = "container:Rasal_chatbox.xcodeproj">
+               BlueprintName = "Rasall_chatbox"
+               ReferencedContainer = "container:Rasal.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "04580C01192CDDA4008B0A2C"
                BuildableName = "Rasal_chatboxTests.xctest"
-               BlueprintName = "Rasal_chatboxTests"
-               ReferencedContainer = "container:Rasal_chatbox.xcodeproj">
+               BlueprintName = "Rasall_chatboxTests"
+               ReferencedContainer = "container:Rasal.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -44,8 +44,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "04580BE6192CDDA4008B0A2C"
             BuildableName = "Rasal_chatbox.app"
-            BlueprintName = "Rasal_chatbox"
-            ReferencedContainer = "container:Rasal_chatbox.xcodeproj">
+            BlueprintName = "Rasall_chatbox"
+            ReferencedContainer = "container:Rasal.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -63,8 +63,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "04580BE6192CDDA4008B0A2C"
             BuildableName = "Rasal_chatbox.app"
-            BlueprintName = "Rasal_chatbox"
-            ReferencedContainer = "container:Rasal_chatbox.xcodeproj">
+            BlueprintName = "Rasall_chatbox"
+            ReferencedContainer = "container:Rasal.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -81,8 +81,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "04580BE6192CDDA4008B0A2C"
             BuildableName = "Rasal_chatbox.app"
-            BlueprintName = "Rasal_chatbox"
-            ReferencedContainer = "container:Rasal_chatbox.xcodeproj">
+            BlueprintName = "Rasall_chatbox"
+            ReferencedContainer = "container:Rasal.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
