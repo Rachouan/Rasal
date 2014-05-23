@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "04580BE6192CDDA4008B0A2C"
-               BuildableName = "Rasal_chatbox.app"
+               BuildableName = "Rasall_chatbox.app"
                BlueprintName = "Rasall_chatbox"
                ReferencedContainer = "container:Rasal.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "04580C01192CDDA4008B0A2C"
-               BuildableName = "Rasal_chatboxTests.xctest"
+               BuildableName = "Rasall_chatboxTests.xctest"
                BlueprintName = "Rasall_chatboxTests"
                ReferencedContainer = "container:Rasal.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "04580BE6192CDDA4008B0A2C"
-            BuildableName = "Rasal_chatbox.app"
+            BuildableName = "Rasall_chatbox.app"
             BlueprintName = "Rasall_chatbox"
             ReferencedContainer = "container:Rasal.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "04580BE6192CDDA4008B0A2C"
-            BuildableName = "Rasal_chatbox.app"
+            BuildableName = "Rasall_chatbox.app"
             BlueprintName = "Rasall_chatbox"
             ReferencedContainer = "container:Rasal.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "04580BE6192CDDA4008B0A2C"
-            BuildableName = "Rasal_chatbox.app"
+            BuildableName = "Rasall_chatbox.app"
             BlueprintName = "Rasall_chatbox"
             ReferencedContainer = "container:Rasal.xcodeproj">
          </BuildableReference>
