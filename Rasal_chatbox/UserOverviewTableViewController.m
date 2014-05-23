@@ -139,7 +139,6 @@
     [cell.contentView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
     
     UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", user.profilePic]];
-    UIImage *inactiveImg = [UIImage imageNamed:[NSString stringWithFormat:@"offline"]];
     
     UIView *customColorView = [[UIView alloc] init];
     customColorView.backgroundColor = [UIColor colorWithRed:239/255.0
@@ -152,16 +151,13 @@
     UIImageView *photo = [[UIImageView alloc] initWithFrame:CGRectMake(225.0, 0.0, image.size.width, image.size.height)];
     photo.image = image;
     
-    UIImageView *inactive = [[UIImageView alloc] initWithFrame:CGRectMake(225.0, 0.0, inactiveImg.size.width, inactiveImg.size.height)];
-    inactive.image = inactiveImg;
-    
     
     CALayer * imageLayer = [CALayer layer];
     imageLayer.frame = CGRectMake(0, 0, 100, 100);
     [imageLayer setContents:(id)[photo.image CGImage]];
     
     if(!user.active){
-        [imageLayer setContents:(id)[inactive.image CGImage]];
+        
     }
     
     [cell.contentView.layer addSublayer:imageLayer];
@@ -169,6 +165,9 @@
     CAShapeLayer *mask = [CAShapeLayer layer];
     mask.fillColor = [UIColor whiteColor].CGColor;
     mask.path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, 70, 70)].CGPath;
+    mask.borderColor = [UIColor colorWithHue:0.18 saturation:0.54 brightness:0.98 alpha:1].CGColor;
+    mask.borderWidth = 5;
+    mask.cornerRadius = 40;
     mask.position = CGPointMake(imageLayer.bounds.origin.x + (imageLayer.frame.size.width)/2, imageLayer.bounds.origin.y + (imageLayer.frame.size.height)/2);
     mask.bounds = CGRectMake(0, 0, 70, 70);
     
