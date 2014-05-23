@@ -137,8 +137,7 @@
     }
     
     [cell.contentView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
-    
-    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", user.profilePic]];
+
     
     UIView *customColorView = [[UIView alloc] init];
     customColorView.backgroundColor = [UIColor colorWithRed:239/255.0
@@ -147,30 +146,33 @@
                                                       alpha:0.5];
     cell.selectedBackgroundView =  customColorView;
     
-
-    UIImageView *photo = [[UIImageView alloc] initWithFrame:CGRectMake(225.0, 0.0, image.size.width, image.size.height)];
-    photo.image = image;
+    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", user.profilePic]];
     
     
     CALayer * imageLayer = [CALayer layer];
     imageLayer.frame = CGRectMake(0, 0, 100, 100);
-    [imageLayer setContents:(id)[photo.image CGImage]];
+    [imageLayer setContents:(id)[image CGImage]];
     
+    CAShapeLayer *onlineStatus = [CAShapeLayer layer];
+    onlineStatus.fillColor = [UIColor whiteColor].CGColor;
+    onlineStatus.path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, 80, 80)].CGPath;
+    onlineStatus.borderColor = [UIColor colorWithRed:0.27 green:0.73 blue:0.52 alpha:1].CGColor;
+    onlineStatus.borderWidth = 2;
+    onlineStatus.cornerRadius = 40;
+    onlineStatus.position = CGPointMake(imageLayer.bounds.origin.x + (imageLayer.frame.size.width)/2, imageLayer.bounds.origin.y + (imageLayer.frame.size.height)/2);
+    onlineStatus.bounds = CGRectMake(0, 0, 80, 80);
+    [cell.contentView.layer addSublayer:onlineStatus];
     
     [cell.contentView.layer addSublayer:imageLayer];
     
     CAShapeLayer *mask = [CAShapeLayer layer];
     mask.fillColor = [UIColor whiteColor].CGColor;
     mask.path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, 70, 70)].CGPath;
-    mask.borderColor = [UIColor colorWithHue:0.18 saturation:0.54 brightness:0.98 alpha:1].CGColor;
-    mask.borderWidth = 5;
-    mask.cornerRadius = 40;
     mask.position = CGPointMake(imageLayer.bounds.origin.x + (imageLayer.frame.size.width)/2, imageLayer.bounds.origin.y + (imageLayer.frame.size.height)/2);
     mask.bounds = CGRectMake(0, 0, 70, 70);
-    
+
     
     if(!user.active){
-        
         mask.borderColor = [UIColor colorWithHue:0.18 saturation:0.54 brightness:0.98 alpha:.3].CGColor;
     }
     

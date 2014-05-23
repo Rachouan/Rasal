@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "04580BE6192CDDA4008B0A2C"
-            BuildableName = "Rasal_chatbox.app"
-            BlueprintName = "Rasal_chatbox"
-            ReferencedContainer = "container:Rasal_chatbox.xcodeproj">
+            BuildableName = "Rasall_chatbox.app"
+            BlueprintName = "Rasall_chatbox"
+            ReferencedContainer = "container:Rasal.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "04580BE6192CDDA4008B0A2C"
-            BuildableName = "Rasal_chatbox.app"
-            BlueprintName = "Rasal_chatbox"
-            ReferencedContainer = "container:Rasal_chatbox.xcodeproj">
+            BuildableName = "Rasall_chatbox.app"
+            BlueprintName = "Rasall_chatbox"
+            ReferencedContainer = "container:Rasal.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
