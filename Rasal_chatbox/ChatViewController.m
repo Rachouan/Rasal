@@ -24,6 +24,8 @@
         
         int connected_user = 0;
         
+        NSLog(@"%d",connected_user);
+        
         NSDate *currentDate = [[NSDate date] init];
         NSLog(@"%@", currentDate);
         
