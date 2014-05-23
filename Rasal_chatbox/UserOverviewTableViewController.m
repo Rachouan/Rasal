@@ -38,6 +38,10 @@
             User *user = [UserFactory createUserWithDictionary:dict];
             [self.users addObject:user];
         }
+        
+        
+        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:234.0f/255.0f green:73.0f/255.0f blue:85.0f/255.0f alpha:1.0f]];
+        
     }
     return self;
 }
@@ -117,6 +121,8 @@
     if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [tableView setSeparatorInset:UIEdgeInsetsZero];
     }
+    
+    [cell.contentView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
     
     UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", user.profilePic]];
     
