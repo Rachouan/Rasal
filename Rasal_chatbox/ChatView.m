@@ -17,12 +17,41 @@
         // Initialization code
         self.backgroundColor = [UIColor whiteColor];
         
-        self.user_message_lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 64, frame.size.width, 30)];
-        [self.user_message_lbl setBackgroundColor:[UIColor redColor]];
-        [self addSubview:self.user_message_lbl];
+        self.scrollVW = [[UIScrollView alloc]initWithFrame:frame];
+        [self addSubview:self.scrollVW];
         
     }
     return self;
+}
+
+-(void)reloadChat:(NSMutableArray *)array{
+    
+    self.messages = array;
+    
+    NSLog(@"%@",self.messages);
+    
+    int yPos = 20;
+    
+    for (Messages *message in self.messages) {
+        
+        self.user_message_lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, yPos, self.frame.size.width, 30)];
+        self.user_message_lbl.text = message.message;
+        [self.user_message_lbl setBackgroundColor:[UIColor redColor]];
+        [self.scrollVW addSubview:self.user_message_lbl];
+        
+        yPos += self.user_message_lbl.frame.size.height + 40;
+
+    }
+    
+    
+    self.scrollVW.contentSize = CGSizeMake(0, 600);
+    
+    if(yPos > self.frame.size.height){
+        
+        self.scrollVW.contentSize = CGSizeMake(0, yPos);
+    }
+    
+    
 }
 
 /*

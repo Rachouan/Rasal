@@ -15,8 +15,9 @@
 @interface ChatViewController : UIViewController
 
 @property (nonatomic, strong) ChatView *view;
-@property (nonatomic, strong) NSMutableArray *messages;
+@property (nonatomic,strong)NSMutableArray *messages;
+@property (nonatomic, strong) User * selectedUser;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andChatVenster:(User*)selectedUser;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andChatVenster:(User*)selectedUser andAllMessages:(NSMutableArray *)messages;
 
 @end

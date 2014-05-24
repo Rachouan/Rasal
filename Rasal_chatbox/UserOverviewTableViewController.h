@@ -12,10 +12,13 @@
 #import "UserFactory.h"
 #import "ChatViewController.h"
 #import "UserOverviewTableViewCell.h"
+#import <AFNetworking.h>
 
 @interface UserOverviewTableViewController : UITableViewController <UITableViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *users;
 @property (nonatomic,strong)UIRefreshControl * refreshControl;
+@property (nonatomic, strong) NSMutableArray * loadedData;
+@property (nonatomic, strong) NSMutableArray *messages;
 
 @end

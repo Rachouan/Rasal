@@ -22,28 +22,10 @@
         self.title = @"Rasal";
         self.users = [NSMutableArray array];
         
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"users" ofType:@"json"];
-        NSData *jsonData = [NSData dataWithContentsOfFile:path];
-        NSError *error = nil;
+        //http://volpesalvatore.be/rasal/api/messages?id=1
         
-        NSArray *loadedData = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
-        
-        if(!error){
-            NSLog(@"%@", loadedData);
-        }else{
-            NSLog(@"Error Json");
-        }
-        
-        /*for (NSString *fontFamilies in [UIFont familyNames]) {
-            for (NSString *fontFamilie in [UIFont fontNamesForFamilyName:fontFamilies]) {
-                NSLog(@"%@",fontFamilie);
-            }
-        }*/
-        
-        for (NSDictionary *dict in loadedData) {
-            User *user = [UserFactory createUserWithDictionary:dict];
-            [self.users addObject:user];
-        }
+        [self loadUsers];
+        [self loadMessages];
         
         
         [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:255.0/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
@@ -82,11 +64,7 @@
     self.refreshControl = [[UIRefreshControl alloc]init];
     [self.tableView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
-    
-     UIEdgeInsets inset = UIEdgeInsetsMake(0, 0, 0, 0);
-     self.tableView.contentInset = inset;
-     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 120, 0, 20)];
-    
+
     [self.tableView registerClass:[UserOverviewTableViewCell class] forCellReuseIdentifier:@"userCell"];
     //[self.tableView setSeparatorColor:[UIColor colorWithRed:0.94 green:0.98 blue:0.45 alpha:1]];
 }
@@ -204,9 +182,113 @@
     
     User *selectedUser = [self.users objectAtIndex:indexPath.row];
     
-    ChatViewController *chatVC = [[ChatViewController alloc] initWithNibName:nil bundle:nil andChatVenster:selectedUser];
+    ChatViewController *chatVC = [[ChatViewController alloc] initWithNibName:nil bundle:nil andChatVenster:selectedUser andAllMessages:self.messages];
     [self.navigationController pushViewController:chatVC animated:YES];
     
+}
+-(void)loadUsers{
+    
+    NSString *path =@"http://volpesalvatore.be/rasal/api/users";
+    NSURL *url = [NSURL URLWithString:path];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+    
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Loaded data");
+        
+        
+        NSError *error = nil;
+        
+        
+        NSDictionary *loadedData = (NSDictionary *)responseObject;
+        
+        if(!error){
+            //NSLog(@"%@", loadedData);
+            
+            for (NSDictionary *dict in loadedData) {
+                User *user = [UserFactory createUserWithDictionary:dict];
+                
+                NSLog(@"%@",dict);
+                
+                [self.users addObject:user];
+                
+                [self.tableView reloadData];
+            }
+        }else{
+            NSLog(@"Error Json");
+            
+            
+        }
+        
+        
+    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error Loading data");
+    }];
+    
+    [operation start];
+    
+    
+    NSLog(@"%@", self.users);
+
+}
+
+
+-(void)loadMessages{
+    
+    
+    self.messages = [NSMutableArray array];
+    
+    NSString *path =@"http://volpesalvatore.be/rasal/api/messages";
+    
+    NSURL *url = [NSURL URLWithString:path];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+    
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        
+        NSError *error = nil;
+        
+        
+        NSDictionary *loadedData = (NSDictionary *)responseObject;
+        
+        
+        NSLog(@"Loaded data %@",loadedData);
+        
+        if(!error){
+            //NSLog(@"%@", loadedData);
+            
+            for (NSDictionary *dict in loadedData) {
+                Messages *message = [MessageFactory createMessageWithDictionarry:dict];
+                NSLog(@"%@",message.message);
+                [self.messages addObject:message];
+            }
+            
+        }else{
+            NSLog(@"Error Json");
+            
+            
+        }
+        
+        
+    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error Loading data");
+    }];
+    
+    [operation start];
+    
+    
+    NSLog(@"%@", self.messages);
 }
 
 /*
