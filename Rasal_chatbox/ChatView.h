@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Messages.h"
 
 @interface ChatView : UIView
 
 @property (nonatomic, strong) UILabel *user_message_lbl;
 @property (nonatomic, strong) UILabel *compagnion_message_lbl;
+@property (nonatomic,strong) NSMutableArray *messages;
+@property (nonatomic, strong) UIScrollView * scrollVW;
+
+-(void)reloadChat:(NSMutableArray *)array;
 
 @end

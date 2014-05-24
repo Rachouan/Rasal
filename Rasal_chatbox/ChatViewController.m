@@ -14,37 +14,15 @@
 
 @implementation ChatViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andChatVenster:(User*)selectedUser
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andChatVenster:(User*)selectedUser andAllMessages:(NSMutableArray *)messages
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
         self.title = [NSString stringWithFormat:@"%@", selectedUser.voornaam];
-        self.messages = [NSMutableArray array];
         
-        NSDate *currentDate = [[NSDate date] init];
-        NSLog(@"%@", currentDate);
-        
-        
-        
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"messages" ofType:@"json"];
-        NSData *jsonData = [NSData dataWithContentsOfFile:path];
-        NSError *error = nil;
-        
-        NSArray *loadedData = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
-        
-        if(!error){
-            //NSLog(@"%@", loadedData);
-        }else{
-            NSLog(@"Error Json");
-        }
-        
-        for (NSDictionary *dict in loadedData) {
-            Messages *message = [MessageFactory createMessageWithDictionarry:dict];
-            if (selectedUser.identifier == message.compagnion_id) {
-                [self.messages addObject:message];                
-            }
-        }
+        self.selectedUser = selectedUser;
+        self.messages = messages;
         
     }
     return self;
@@ -58,9 +36,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self loadMessages];
     // Do any additional setup after loading the view.
 }
-
+-(void)loadMessages{
+    
+    NSMutableArray *array = [NSMutableArray array];
+    
+    for (Messages *message in self.messages) {
+        
+        NSLog(@"Sending message %@",message.message);
+        
+        if(message.user_id == self.selectedUser.identifier){
+            
+            [array addObject:message];
+            
+        }
+        
+    }
+    [self.view reloadChat:array];
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

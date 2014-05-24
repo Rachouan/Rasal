@@ -19,5 +19,6 @@
 @property (nonatomic, strong) NSMutableArray *users;
 @property (nonatomic,strong)UIRefreshControl * refreshControl;
 @property (nonatomic, strong) NSMutableArray * loadedData;
+@property (nonatomic, strong) NSMutableArray *messages;
 
 @end

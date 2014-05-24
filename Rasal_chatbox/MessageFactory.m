@@ -17,7 +17,7 @@
     message.identifier = [[dict objectForKey:@"id"] integerValue];
     message.current_date = [dict objectForKey:@"current_date"];
     
-    message.message = [dict objectForKey:@"message"];
+    message.message = [dict objectForKey:@"messages"];
     
     message.user_id = [[dict objectForKey:@"user_id"] integerValue];
     message.compagnion_id = [[dict objectForKey:@"compagnion_id"] integerValue];
