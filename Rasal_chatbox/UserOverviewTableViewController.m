@@ -236,6 +236,17 @@
     NSLog(@"%@", self.users);
 
 }
+-(void)viewDidAppear:(BOOL)animated{
+    
+    if([[NSUserDefaults standardUserDefaults]boolForKey:@"isUserLoggedIn"] == NO){
+        
+        self.loginVC = [[LoginViewController alloc]initWithNibName:nil bundle:nil];
+        
+        [self presentViewController:self.loginVC animated:NO completion:^{}];
+        
+    }
+    
+}
 
 
 -(void)loadMessages{
