@@ -13,6 +13,7 @@
 #import "ChatViewController.h"
 #import "UserOverviewTableViewCell.h"
 #import <AFNetworking.h>
+#import "LoginViewController.h"
 
 @interface UserOverviewTableViewController : UITableViewController <UITableViewDelegate>
 
@@ -20,5 +21,6 @@
 @property (nonatomic,strong)UIRefreshControl * refreshControl;
 @property (nonatomic, strong) NSMutableArray * loadedData;
 @property (nonatomic, strong) NSMutableArray *messages;
+@property (nonatomic, strong) LoginViewController * loginVC;
 
 @end
