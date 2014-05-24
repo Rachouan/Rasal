@@ -44,7 +44,7 @@
     
     
     self.txtUsername = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, self.background.image.size.width - 40, self.background.image.size.height/2)];
-    self.txtUsername.placeholder = @"username";
+    self.txtUsername.placeholder = @"e-mail";
     self.txtUsername.font = [UIFont fontWithName:@"Avenir-Medium" size:14];
     self.txtUsername.textColor = [UIColor colorWithRed:17.0f/255.0f green:46.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
     self.txtUsername.frame = CGRectMake(self.background.frame.origin.x +40, self.background.frame.origin.y, self.txtUsername.frame.size.width, self.txtUsername.frame.size.height);

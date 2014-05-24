@@ -199,8 +199,6 @@
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Loaded data");
-        
         
         NSError *error = nil;
         
@@ -213,7 +211,6 @@
             for (NSDictionary *dict in loadedData) {
                 User *user = [UserFactory createUserWithDictionary:dict];
                 
-                NSLog(@"%@",dict);
                 
                 [self.users addObject:user];
                 
@@ -232,15 +229,13 @@
     
     [operation start];
     
-    
-    NSLog(@"%@", self.users);
 
 }
 -(void)viewDidAppear:(BOOL)animated{
     
     if([[NSUserDefaults standardUserDefaults]boolForKey:@"isUserLoggedIn"] == NO){
         
-        self.loginVC = [[LoginViewController alloc]initWithNibName:nil bundle:nil];
+        self.loginVC = [[LoginViewController alloc]initWithNibName:nil bundle:nil andUsers:self.users];
         
         [self presentViewController:self.loginVC animated:NO completion:^{}];
         
@@ -274,14 +269,11 @@
         NSDictionary *loadedData = (NSDictionary *)responseObject;
         
         
-        NSLog(@"Loaded data %@",loadedData);
-        
         if(!error){
             //NSLog(@"%@", loadedData);
             
             for (NSDictionary *dict in loadedData) {
                 Messages *message = [MessageFactory createMessageWithDictionarry:dict];
-                NSLog(@"%@",message.message);
                 [self.messages addObject:message];
             }
             
@@ -298,8 +290,6 @@
     
     [operation start];
     
-    
-    NSLog(@"%@", self.messages);
 }
 
 /*

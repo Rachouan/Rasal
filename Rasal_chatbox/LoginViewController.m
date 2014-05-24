@@ -14,11 +14,14 @@
 
 @implementation LoginViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andUsers:(NSMutableArray *)array
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.users = array;
+        
+        NSLog(@"%@",self.users);
     }
     return self;
 }
@@ -43,32 +46,44 @@
     
     NSLog(@"[LOGIN]");
     
-    if( [self.view.txtUsername.text isEqualToString:@"devine"] && [self.view.txtPassword.text isEqualToString:@"test"]){
+    for (User *user in self.users) {
         
-        NSLog(@"CORRECT");
-        
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isUserLoggedIn"];
-        
-        [self.view endEditing:YES];
-        
-        [self.view.btnLogin setImage:[UIImage imageNamed:@"unlock"] forState:UIControlStateNormal];
-        
-        [self performSelector:@selector(login) withObject:self afterDelay:3.0 ];
-    
-        
-    }else{
-        
-        [self.view errorLogin];
-        
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isUserLoggedIn"];
+        if( [self.view.txtUsername.text isEqualToString:@"test"] && [self.view.txtPassword.text isEqualToString:@"test"]){
+            
+            NSLog(@"CORRECT user is %@",user.voornaam);
+            
+            
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isUserLoggedIn"];
+            
+            [self.view endEditing:YES];
+            
+            
+            [self performSelector:@selector(login) withObject:self afterDelay:1.0 ];
+            
+            
+        }else{
+            
+            [self.view errorLogin];
+            
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isUserLoggedIn"];
+        }
+
     }
+    
     
 }
 
 -(void)login{
     
-    [self dismissViewControllerAnimated:YES completion:^{}];
     
+    [self.view.btnLogin setImage:[UIImage imageNamed:@"unlock"] forState:UIControlStateNormal];
+    
+    [self performSelector:@selector(dismiss) withObject:self afterDelay:2.0 ];
+    
+}
+-(void)dismiss{
+    
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (void)didReceiveMemoryWarning
