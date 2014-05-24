@@ -14,18 +14,25 @@ $app = new \Slim\Slim();
 $messagesDAO = new MessagesDAO();
 $usersDAO = new UsersDAO();
 
-/*$app->post("/filledinanswers/?", function() use ($app, $filledInAnswersDAO){
+$app->post("/insertMessage/?", function() use ($app, $messagesDAO){
 
 	header("Content-Type:application/json");
 	$post = $app->request->post();
 	if(empty($post)){
 		$post = (array) json_decode($app->request()->getBody());
 	}
-	echo json_encode($filledInAnswersDAO->insertFilledInAnswer($post["question_id"], $post["answer_id"]));
+	echo json_encode($messagesDAO->insertMessage($post["user_id"], $post["compagnion_id"], $post["message"]));
 	exit();
 
-});*/
+});
 
+$app->get("/users/?", function($email, $password) use ($usersDAO){
+
+	header("Content-Type:application/json");
+	echo json_encode($usersDAO->getUserByEmailAndPassword($email, $password));
+	exit();
+
+});
 
 $app->get("/messages/?", function() use ($messagesDAO){
 
@@ -34,6 +41,7 @@ $app->get("/messages/?", function() use ($messagesDAO){
 	exit();
 
 });
+
 
 $app->get("/messages/:user_id/?", function($user_id) use ($messagesDAO){
 
@@ -51,10 +59,11 @@ $app->get("/users/?", function() use ($usersDAO){
 
 });
 
-$app->get("/users/:user_id/?", function($id) use ($usersDAO){
+$app->get("/users/:user_id/?", function($email, $password) use ($usersDAO){
 
 	header("Content-Type:application/json");
-	echo json_encode($usersDAO->getUserById($id));
+	//echo json_encode($usersDAO->getUserById($id));
+	echo json_encode($usersDAO->getUserByEmailAndPassword($email, $password));
 	exit();
 	
 });

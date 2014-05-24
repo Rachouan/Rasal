@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import <AFNetworking.h>
 #import "User.h"
 #import "UserFactory.h"
 #import "ChatViewController.h"
 #import "UserOverviewTableViewCell.h"
-#import <AFNetworking.h>
 #import "LoginViewController.h"
 
 @interface UserOverviewTableViewController : UITableViewController <UITableViewDelegate>
@@ -22,5 +22,7 @@
 @property (nonatomic, strong) NSMutableArray * loadedData;
 @property (nonatomic, strong) NSMutableArray *messages;
 @property (nonatomic, strong) LoginViewController * loginVC;
+
+@property (nonatomic, strong) ChatViewController *chatVC;
 
 @end

@@ -7,14 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "Messages.h"
 
 @interface ChatView : UIView
 
-@property (nonatomic, strong) UILabel *user_message_lbl;
-@property (nonatomic, strong) UILabel *compagnion_message_lbl;
 @property (nonatomic,strong) NSMutableArray *messages;
 @property (nonatomic, strong) UIScrollView * scrollVW;
+
+@property (nonatomic, strong) UITextField *sendMessageTxt;
+@property (nonatomic, strong) UIButton *sendMessageBtn;
 
 -(void)reloadChat:(NSMutableArray *)array;
 

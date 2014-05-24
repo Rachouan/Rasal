@@ -30,6 +30,9 @@
 		04580C39192CF202008B0A2C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04580C38192CF202008B0A2C /* QuartzCore.framework */; };
 		04580C3B192D0302008B0A2C /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04580C3A192D0302008B0A2C /* images.xcassets */; };
 		04C867F7192D19EF0035FEB1 /* UserOverviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C867F6192D19EF0035FEB1 /* UserOverviewTableViewController.m */; };
+		04D5F9271930CE0B001EDD4A /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D5F9261930CE0B001EDD4A /* RegisterViewController.m */; };
+		04D5F92A1930CE13001EDD4A /* RegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D5F9291930CE13001EDD4A /* RegisterView.m */; };
+		04D5F92C1930DFA5001EDD4A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D5F92B1930DFA5001EDD4A /* SystemConfiguration.framework */; };
 		1A07E570FF08461687426531 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7087ABF7A5CB4C6AAAE59C97 /* libPods.a */; };
 		52DAA1ED19308F2600C44740 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52DAA1EA19308F2600C44740 /* LoginViewController.m */; };
 		52DAA1EE19308F2600C44740 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52DAA1EC19308F2600C44740 /* LoginView.m */; };
@@ -82,6 +85,11 @@
 		04580C3C192D0787008B0A2C /* FatFrankSample-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FatFrankSample-Regular.otf"; sourceTree = "<group>"; };
 		04C867F5192D19EF0035FEB1 /* UserOverviewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserOverviewTableViewController.h; sourceTree = "<group>"; };
 		04C867F6192D19EF0035FEB1 /* UserOverviewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserOverviewTableViewController.m; sourceTree = "<group>"; };
+		04D5F9251930CE0B001EDD4A /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		04D5F9261930CE0B001EDD4A /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		04D5F9281930CE13001EDD4A /* RegisterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterView.h; sourceTree = "<group>"; };
+		04D5F9291930CE13001EDD4A /* RegisterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterView.m; sourceTree = "<group>"; };
+		04D5F92B1930DFA5001EDD4A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2734239BFCED45E4912A3240 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		527D6D74192E818B001B7BEA /* Bariol_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Regular.otf; sourceTree = "<group>"; };
 		527D6D75192E818B001B7BEA /* Bariol-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bariol-Bold.otf"; sourceTree = "<group>"; };
@@ -98,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04D5F92C1930DFA5001EDD4A /* SystemConfiguration.framework in Frameworks */,
 				04580C39192CF202008B0A2C /* QuartzCore.framework in Frameworks */,
 				04580BED192CDDA4008B0A2C /* CoreGraphics.framework in Frameworks */,
 				04580BEF192CDDA4008B0A2C /* UIKit.framework in Frameworks */,
@@ -170,6 +179,7 @@
 		04580BE9192CDDA4008B0A2C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04D5F92B1930DFA5001EDD4A /* SystemConfiguration.framework */,
 				04580C38192CF202008B0A2C /* QuartzCore.framework */,
 				04580BEA192CDDA4008B0A2C /* Foundation.framework */,
 				04580BEC192CDDA4008B0A2C /* CoreGraphics.framework */,
@@ -277,6 +287,17 @@
 			name = cell;
 			sourceTree = "<group>";
 		};
+		04D5F9241930CDF7001EDD4A /* register */ = {
+			isa = PBXGroup;
+			children = (
+				04D5F9251930CE0B001EDD4A /* RegisterViewController.h */,
+				04D5F9261930CE0B001EDD4A /* RegisterViewController.m */,
+				04D5F9281930CE13001EDD4A /* RegisterView.h */,
+				04D5F9291930CE13001EDD4A /* RegisterView.m */,
+			);
+			name = register;
+			sourceTree = "<group>";
+		};
 		527D6D77192E818F001B7BEA /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +311,7 @@
 		52DAA1EF19308F2C00C44740 /* login */ = {
 			isa = PBXGroup;
 			children = (
+				04D5F9241930CDF7001EDD4A /* register */,
 				52DAA1E919308F2600C44740 /* LoginViewController.h */,
 				52DAA1EA19308F2600C44740 /* LoginViewController.m */,
 				52DAA1EB19308F2600C44740 /* LoginView.h */,
@@ -439,9 +461,11 @@
 				52DAA1EE19308F2600C44740 /* LoginView.m in Sources */,
 				04290C40192F890400C1325C /* MessageFactory.m in Sources */,
 				04580C34192CEFFD008B0A2C /* ChatViewController.m in Sources */,
+				04D5F9271930CE0B001EDD4A /* RegisterViewController.m in Sources */,
 				04290C3C192F861C00C1325C /* Messages.m in Sources */,
 				52DAA1ED19308F2600C44740 /* LoginViewController.m in Sources */,
 				04580C2F192CEAAC008B0A2C /* UserFactory.m in Sources */,
+				04D5F92A1930CE13001EDD4A /* RegisterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

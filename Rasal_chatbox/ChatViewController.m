@@ -39,25 +39,59 @@
     
     [self loadMessages];
     // Do any additional setup after loading the view.
+    
+    [self.view.sendMessageBtn addTarget:self action:@selector(sendMessage:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view.sendMessageTxt addTarget:self action:@selector(animateScrollToViewTextField:) forControlEvents:UIControlEventEditingDidBegin];
+    
 }
+
+- (void)animateScrollToViewTextField:(id)sender{
+    NSLog(@"Did tapped Textfield");
+    
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         self.view.sendMessageTxt.center = CGPointMake(self.view.frame.size.width / 2, 320);
+                         self.view.sendMessageBtn.center = CGPointMake(self.view.frame.size.width - 36, self.view.sendMessageTxt.frame.origin.y + 20);
+                     }
+                     completion:^(BOOL finished){
+                         
+                     }];
+    
+}
+
 -(void)loadMessages{
     
     NSMutableArray *array = [NSMutableArray array];
     
     for (Messages *message in self.messages) {
         
-        NSLog(@"Sending message %@",message.message);
-        
-        if(message.user_id == self.selectedUser.identifier){
-            
+        if(message.compagnion_id == self.selectedUser.identifier){
             [array addObject:message];
-            
         }
-        
     }
-    [self.view reloadChat:array];
     
+    [self.view reloadChat:array];
 }
+
+- (void)sendMessage:(id)sender{
+    self.messages = [NSMutableArray array];
+    
+    NSString *path = @"http://volpesalvatore.be/rasal/api/insertMessage";
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *params = @{@"message": self.view.sendMessageTxt.text,
+                             @"user_id": [NSString stringWithFormat:@"%d", 1],
+                             @"compagnion_id": [NSString stringWithFormat:@"%d", self.selectedUser.identifier]};
+    
+    [manager POST:path
+          parameters:params
+          success:^(AFHTTPRequestOperation *operation, id responseObject) { NSLog(@"JSON: %@", responseObject); }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) { NSLog(@"Error: %@", error); }
+     ];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"reload_chat" object:self];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -22,11 +22,13 @@
         self.title = @"Rasal";
         self.users = [NSMutableArray array];
         
-        //http://volpesalvatore.be/rasal/api/messages?id=1
-        
         [self loadUsers];
         [self loadMessages];
         
+        UIButton *logoutBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [logoutBtn setBackgroundImage:[UIImage imageNamed:@"logout_btn"] forState:UIControlStateNormal];
+        
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"logout_btn"] style:UIBarButtonItemStylePlain target:self action:@selector(logoutBtnTapped:)];
         
         [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:255.0/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
         [[UINavigationBar appearance]setTintColor:[UIColor colorWithRed:234.0f/255.0f green:73.0f/255.0f blue:85.0f/255.0f alpha:1.0f]];
@@ -40,13 +42,12 @@
                                                                [UIFont fontWithName:@"Avenir-Medium" size:21.0], NSFontAttributeName, nil]];
         
         self.navigationController.navigationBar.translucent = NO;
-        
     }
     return self;
 }
+
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
-    NSLog(@"STATUS BAR CHANGED");
     return UIStatusBarStyleLightContent;
 }
 
@@ -66,7 +67,8 @@
     [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
 
     [self.tableView registerClass:[UserOverviewTableViewCell class] forCellReuseIdentifier:@"userCell"];
-    //[self.tableView setSeparatorColor:[UIColor colorWithRed:0.94 green:0.98 blue:0.45 alpha:1]];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadMessages) name:@"reload_chat" object:nil];
+
 }
 - (void)refreshTable {
     //TODO: refresh your data
@@ -102,7 +104,6 @@
     User *user = [self.users objectAtIndex:indexPath.row];
     
     //create your own labels and image view object, specify the frame
-    
     if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [tableView setSeparatorInset:UIEdgeInsetsZero];
     }
@@ -124,16 +125,18 @@
     imageLayer.frame = CGRectMake(0, 0, 100, 100);
     [imageLayer setContents:(id)[image CGImage]];
     
-    CAShapeLayer *onlineStatus = [CAShapeLayer layer];
-    onlineStatus.fillColor = [UIColor whiteColor].CGColor;
-    onlineStatus.path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, 80, 80)].CGPath;
-    onlineStatus.borderColor = [UIColor colorWithRed:0.27 green:0.73 blue:0.52 alpha:1].CGColor;
-    onlineStatus.borderWidth = 2;
-    onlineStatus.cornerRadius = 40;
-    onlineStatus.position = CGPointMake(imageLayer.bounds.origin.x + (imageLayer.frame.size.width)/2, imageLayer.bounds.origin.y + (imageLayer.frame.size.height)/2);
-    onlineStatus.bounds = CGRectMake(0, 0, 80, 80);
-    [cell.contentView.layer addSublayer:onlineStatus];
-    
+    if(user.active == YES){
+        CAShapeLayer *onlineStatus = [CAShapeLayer layer];
+        onlineStatus.fillColor = [UIColor whiteColor].CGColor;
+        onlineStatus.path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, 80, 80)].CGPath;
+        onlineStatus.borderColor = [UIColor colorWithRed:0.27 green:0.73 blue:0.52 alpha:1].CGColor;
+        onlineStatus.borderWidth = 2;
+        onlineStatus.cornerRadius = 40;
+        onlineStatus.position = CGPointMake(imageLayer.bounds.origin.x + (imageLayer.frame.size.width)/2, imageLayer.bounds.origin.y + (imageLayer.frame.size.height)/2);
+        onlineStatus.bounds = CGRectMake(0, 0, 80, 80);
+        [cell.contentView.layer addSublayer:onlineStatus];
+    }
+
     [cell.contentView.layer addSublayer:imageLayer];
     
     CAShapeLayer *mask = [CAShapeLayer layer];
@@ -182,26 +185,23 @@
     
     User *selectedUser = [self.users objectAtIndex:indexPath.row];
     
-    ChatViewController *chatVC = [[ChatViewController alloc] initWithNibName:nil bundle:nil andChatVenster:selectedUser andAllMessages:self.messages];
-    [self.navigationController pushViewController:chatVC animated:YES];
+    self.chatVC = [[ChatViewController alloc] initWithNibName:nil bundle:nil andChatVenster:selectedUser andAllMessages:self.messages];
+    [self.navigationController pushViewController:self.chatVC animated:YES];
     
 }
+
 -(void)loadUsers{
     
     NSString *path =@"http://volpesalvatore.be/rasal/api/users";
     NSURL *url = [NSURL URLWithString:path];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-    
-    
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
     
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
-    
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSError *error = nil;
-        
         
         NSDictionary *loadedData = (NSDictionary *)responseObject;
         
@@ -210,79 +210,44 @@
             
             for (NSDictionary *dict in loadedData) {
                 User *user = [UserFactory createUserWithDictionary:dict];
-                
-                
                 [self.users addObject:user];
-                
                 [self.tableView reloadData];
             }
         }else{
             NSLog(@"Error Json");
-            
-            
         }
-        
         
     }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error Loading data");
     }];
     
-    [operation start];
-    
-
-}
--(void)viewDidAppear:(BOOL)animated{
-    
-    if([[NSUserDefaults standardUserDefaults]boolForKey:@"isUserLoggedIn"] == NO){
-        
-        self.loginVC = [[LoginViewController alloc]initWithNibName:nil bundle:nil andUsers:self.users];
-        
-        [self presentViewController:self.loginVC animated:NO completion:^{}];
-        
-    }
-    
+    [operation start];    
 }
 
-
--(void)loadMessages{
-    
+- (void)loadMessages{
     
     self.messages = [NSMutableArray array];
     
-    NSString *path =@"http://volpesalvatore.be/rasal/api/messages";
+    NSString *path = @"http://volpesalvatore.be/rasal/api/messages";
     
     NSURL *url = [NSURL URLWithString:path];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-    
-    
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
-    
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
-    
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        
-        NSError *error = nil;
-        
-        
-        NSDictionary *loadedData = (NSDictionary *)responseObject;
-        
+    NSError *error = nil;
+    NSDictionary *loadedData = (NSDictionary *)responseObject;
         
         if(!error){
-            //NSLog(@"%@", loadedData);
-            
             for (NSDictionary *dict in loadedData) {
                 Messages *message = [MessageFactory createMessageWithDictionarry:dict];
                 [self.messages addObject:message];
             }
-            
         }else{
             NSLog(@"Error Json");
-            
-            
         }
-        
         
     }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error Loading data");
@@ -290,7 +255,19 @@
     
     [operation start];
     
+    
+    if (self.chatVC != nil) {
+        [self.chatVC viewWillAppear:YES];
+    }
 }
+
+- (void)logoutBtnTapped:(id)sender{
+    NSLog(@"Log out");
+    
+    LoginViewController *loginVC = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
+    [self presentViewController:loginVC animated:YES completion:^{}];
+}
+
 
 /*
  // Override to support conditional editing of the table view.

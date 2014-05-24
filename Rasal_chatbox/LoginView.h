@@ -11,10 +11,11 @@
 
 @interface LoginView : UIView
 
-@property (nonatomic,strong)UIImageView *background;
-@property (nonatomic,strong)UITextField *txtUsername;
-@property (nonatomic,strong)UITextField *txtPassword;
-@property (nonatomic,strong)UIButton *btnLogin;
+@property (nonatomic,strong) UIImageView *background;
+@property (nonatomic,strong) UITextField *txtUsername;
+@property (nonatomic,strong) UITextField *txtPassword;
+@property (nonatomic,strong) UIButton *btnLogin;
+@property (nonatomic,strong) UIButton *btnRegister;
 @property (nonatomic, strong) UIImageView * imageview;
 
 - (void)errorLogin;

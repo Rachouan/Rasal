@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AFNetworking.h>
 #import "ChatView.h"
 #import "User.h"
 #import "Messages.h"
@@ -19,5 +20,7 @@
 @property (nonatomic, strong) User * selectedUser;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andChatVenster:(User*)selectedUser andAllMessages:(NSMutableArray *)messages;
+- (void)viewWillAppear:(BOOL)animated;
+
 
 @end
