@@ -22,11 +22,62 @@
         self.title = [NSString stringWithFormat:@"%@", selectedUser.voornaam];
         
         self.selectedUser = selectedUser;
-        self.messages = messages;
+        
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:
+                                    [self methodSignatureForSelector: @selector(timerCallback)]];
+        [invocation setTarget:self];
+        [invocation setSelector:@selector(timerCallback)];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:5.0 invocation:invocation repeats:NO];
+
+        
+        
         
     }
     return self;
 }
+
+
+- (void)loadAllMessages{
+    
+    self.messages = [NSMutableArray array];
+    
+    NSLog(@"%lu",(unsigned long)self.messages.count);
+    
+    NSString *path = @"http://volpesalvatore.be/rasal/api/messages";
+    
+    NSURL *url = [NSURL URLWithString:path];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSError *error = nil;
+        NSDictionary *loadedData = (NSDictionary *)responseObject;
+        
+        if(!error){
+            for (NSDictionary *dict in loadedData) {
+                Messages *message = [MessageFactory createMessageWithDictionarry:dict];
+                
+                if(message.compagnion_id == self.selectedUser.identifier){
+                [self.messages addObject:message];
+                }
+            }
+            [self.view reloadChat:self.messages];
+        }else{
+            NSLog(@"Error Json");
+        }
+        
+    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error Loading data");
+    }];
+    
+    [operation start];
+    
+    
+    
+}
+
 
 - (void)loadView{
     CGRect bounds = [UIScreen mainScreen].bounds;
@@ -37,7 +88,7 @@
 {
     [super viewDidLoad];
     
-    [self loadMessages];
+    [self loadAllMessages];
     // Do any additional setup after loading the view.
     
     [self.view.sendMessageBtn addTarget:self action:@selector(sendMessage:) forControlEvents:UIControlEventTouchUpInside];
@@ -59,22 +110,36 @@
     
 }
 
--(void)loadMessages{
+- (void)animateScrollToViewTextFieldBack:(id)sender{
+    NSLog(@"Did tapped Textfield");
     
-    NSMutableArray *array = [NSMutableArray array];
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         
+                         self.view.sendMessageTxt.enabled = NO;
+                         self.view.sendMessageTxt.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height - self.view.sendMessageTxt.frame.size.height - 20);
+                         self.view.sendMessageBtn.center = CGPointMake(self.view.sendMessageTxt.frame.origin.x + self.view.sendMessageTxt.frame.size.width - self.view.sendMessageBtn.frame.size.width - 5, self.view.sendMessageTxt.frame.origin.y + 20);
+                     }
+                     completion:^(BOOL finished){
+                         
+                         self.view.sendMessageTxt.enabled = YES;
+                         
+                     }];
     
-    for (Messages *message in self.messages) {
-        
-        if(message.compagnion_id == self.selectedUser.identifier){
-            [array addObject:message];
-        }
-    }
-    
-    [self.view reloadChat:array];
+}
+
+- (void)timerCallback {
+    NSLog(@"reload");
+	[self loadAllMessages];
 }
 
 - (void)sendMessage:(id)sender{
     self.messages = [NSMutableArray array];
+    
+    
+    [self.view endEditing:YES];
+    [self animateScrollToViewTextFieldBack:sender];
+    
     
     if(![self.view.sendMessageTxt.text  isEqual:  @""]){
     
@@ -92,7 +157,10 @@
           failure:^(AFHTTPRequestOperation *operation, NSError *error) { NSLog(@"Error: %@", error); }
      ];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"reload_chat" object:self];
+        
+        self.view.sendMessageTxt.text = @"";
+        
+        [self loadAllMessages];
         
         
     }else{

@@ -23,7 +23,6 @@
         self.users = [NSMutableArray array];
         
         [self loadUsers];
-        [self loadMessages];
         
         UIButton *logoutBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [logoutBtn setBackgroundImage:[UIImage imageNamed:@"logout_btn"] forState:UIControlStateNormal];
@@ -67,7 +66,6 @@
     [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
 
     [self.tableView registerClass:[UserOverviewTableViewCell class] forCellReuseIdentifier:@"userCell"];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadMessages) name:@"reload_chat" object:nil];
 
 }
 - (void)refreshTable {
@@ -252,43 +250,6 @@
         }
     }
     
-}
-
-- (void)loadMessages{
-    
-    self.messages = [NSMutableArray array];
-    
-    NSString *path = @"http://volpesalvatore.be/rasal/api/messages";
-    
-    NSURL *url = [NSURL URLWithString:path];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
-    operation.responseSerializer = [AFJSONResponseSerializer serializer];
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-    NSError *error = nil;
-    NSDictionary *loadedData = (NSDictionary *)responseObject;
-        
-        if(!error){
-            for (NSDictionary *dict in loadedData) {
-                Messages *message = [MessageFactory createMessageWithDictionarry:dict];
-                [self.messages addObject:message];
-            }
-        }else{
-            NSLog(@"Error Json");
-        }
-        
-    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error Loading data");
-    }];
-    
-    [operation start];
-    
-    
-    if (self.chatVC != nil) {
-        [self.chatVC viewWillAppear:YES];
-    }
 }
 
 - (void)logoutBtnTapped:(id)sender{

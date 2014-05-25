@@ -17,6 +17,7 @@
 
 @property (nonatomic, strong) UITextField *sendMessageTxt;
 @property (nonatomic, strong) UIButton *sendMessageBtn;
+@property (nonatomic, strong) CAShapeLayer * rectangle;
 
 -(void)reloadChat:(NSMutableArray *)array;
 
