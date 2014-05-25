@@ -27,7 +27,7 @@
                                     [self methodSignatureForSelector: @selector(timerCallback)]];
         [invocation setTarget:self];
         [invocation setSelector:@selector(timerCallback)];
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:5.0 invocation:invocation repeats:NO];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 invocation:invocation repeats:NO];
 
         
         
