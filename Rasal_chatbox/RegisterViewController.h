@@ -9,10 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <AFNetworking.h>
 #import "RegisterView.h"
+#import "User.h"
+#import "UserFactory.h"
+//#import "UserOverviewTableViewController.h"
 
 
 @interface RegisterViewController : UIViewController
 
+@property (nonatomic, strong) User *current_user;
 @property (nonatomic, strong) RegisterView *view;
+
+@property (nonatomic, strong) NSMutableArray *notEmptyTextfieldsArray;
 
 @end

@@ -45,10 +45,10 @@
     // Do any additional setup after loading the view.
     
     [self.view.btnRegister addTarget:self action:@selector(registerBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
-    
 }
 
 - (void)registerBtnTapped:(id)sender{
+    self.notEmptyTextfieldsArray = [NSMutableArray array];
     
     NSString *path = @"http://volpesalvatore.be/rasal/api/insertUser";
     
@@ -58,13 +58,42 @@
                              @"naam": self.view.txtLastname.text,
                              @"voornaam": self.view.txtName.text,
                              @"profilePic": [NSString stringWithFormat:@"1.png"]};
+
     
-    [manager POST:path
-       parameters:params
-          success:^(AFHTTPRequestOperation *operation, id responseObject) { NSLog(@"JSON: %@", responseObject); }
-          failure:^(AFHTTPRequestOperation *operation, NSError *error) { NSLog(@"Error: %@", error); }
-     ];
-    
+    for (UITextField *currentTxt in self.view.textFieldsArray) {
+        
+        if (currentTxt.text.length > 0) {
+            currentTxt.backgroundColor = [UIColor whiteColor];
+            currentTxt.textColor = [UIColor colorWithRed:17.0f/255.0f green:46.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
+            [self.notEmptyTextfieldsArray addObject:currentTxt];
+        }else{
+            currentTxt.backgroundColor = [UIColor colorWithRed:0.92 green:0.33 blue:0.31 alpha:1];
+            currentTxt.textColor = [UIColor whiteColor];
+        }
+        
+        if (self.notEmptyTextfieldsArray.count == 5) {
+            NSLog(@"READY TO GO");
+            [manager POST:path
+             parameters:params
+             success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                 [self.view endEditing:YES];
+             
+                 self.current_user = [UserFactory createUserWithDictionary:responseObject];
+                 
+                 NSLog(@"%@", self.current_user);
+             
+                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isUserLoggedIn"];
+                 [[NSUserDefaults standardUserDefaults] setInteger:self.current_user.identifier forKey:@"current_user"];
+            
+             }
+             failure:^(AFHTTPRequestOperation *operation, NSError *error) { NSLog(@"Error: %@", error);}
+             ];
+            
+            [self dismissViewControllerAnimated:YES completion:^{}];
+        }else{
+            [self.view errorRegister];
+        }
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField*)textField{

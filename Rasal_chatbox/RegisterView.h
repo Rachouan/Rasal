@@ -19,6 +19,10 @@
 @property (nonatomic,strong) UIButton *btnRegister;
 @property (nonatomic, strong) UIButton * upload;
 
+@property (nonatomic, strong) NSMutableArray *textFieldsArray;
+
 @property (nonatomic, strong) UIScrollView *scrollView;
+
+- (void)errorRegister;
 
 @end

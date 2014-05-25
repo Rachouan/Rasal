@@ -17,8 +17,10 @@
         // Initialization code
         self.backgroundColor = [UIColor whiteColor];
         
+        self.textFieldsArray = [NSMutableArray array];
+        
         self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, - 64, frame.size.width, frame.size.height + 64)];
-        self.scrollView.contentSize = CGSizeMake(frame.size.width, frame.size.height);
+        self.scrollView.contentSize = CGSizeMake(frame.size.width, frame.size.height + 300);
         [self addSubview:self.scrollView];
         
         [self createBackground];
@@ -58,61 +60,69 @@
     
     int txtFieldHeight = self.background.frame.size.height/5;
     
-    self.txtLastname = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, self.background.image.size.width - 40, txtFieldHeight)];
+    self.txtLastname = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, self.background.image.size.width - 45, txtFieldHeight - 10)];
     self.txtLastname.placeholder = @"Last-name";
     self.txtLastname.font = [UIFont fontWithName:@"Avenir-Medium" size:14];
     self.txtLastname.textColor = [UIColor colorWithRed:17.0f/255.0f green:46.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
-    self.txtLastname.frame = CGRectMake(self.background.frame.origin.x +40, self.background.frame.origin.y, self.txtLastname.frame.size.width, self.txtLastname.frame.size.height);
+    self.txtLastname.frame = CGRectMake(self.background.frame.origin.x + 40, self.background.frame.origin.y + 5, self.txtLastname.frame.size.width, self.txtLastname.frame.size.height);
     self.txtLastname.keyboardType = UIKeyboardTypeEmailAddress;
+    self.txtLastname.layer.cornerRadius = 5;
     self.txtLastname.tag = 0;
     self.txtLastname.returnKeyType = UIReturnKeyNext;
+    [self.textFieldsArray addObject:self.txtLastname];
     [self.scrollView addSubview:self.txtLastname];
     
     
-    self.txtName = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, self.background.image.size.width - 40, txtFieldHeight)];
+    self.txtName = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, self.background.image.size.width - 45, txtFieldHeight - 10)];
     self.txtName.placeholder = @"Name";
     self.txtName.font = [UIFont fontWithName:@"Avenir-Medium" size:14];
     self.txtName.textColor = [UIColor colorWithRed:17.0f/255.0f green:46.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
-    self.txtName.frame = CGRectMake(self.background.frame.origin.x +40, self.txtLastname.frame.origin.y+self.txtName.frame.size.height, self.txtName.frame.size.width, self.txtName.frame.size.height);
+    self.txtName.frame = CGRectMake(self.background.frame.origin.x + 40, self.txtLastname.frame.origin.y+self.txtName.frame.size.height + 10, self.txtName.frame.size.width, self.txtName.frame.size.height);
     self.txtName.keyboardType = UIKeyboardTypeEmailAddress;
     self.txtName.tag = 1;
     self.txtName.returnKeyType = UIReturnKeyNext;
+    self.txtName.layer.cornerRadius = 5;
+    [self.textFieldsArray addObject:self.txtName];
     [self.scrollView addSubview:self.txtName];
     
     
-    self.txtEmail = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, self.background.image.size.width - 40, txtFieldHeight)];
+    self.txtEmail = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, self.background.image.size.width - 45, txtFieldHeight - 10)];
     self.txtEmail.placeholder = @"E-mail";
     self.txtEmail.font = [UIFont fontWithName:@"Avenir-Medium" size:14];
     self.txtEmail.textColor = [UIColor colorWithRed:17.0f/255.0f green:46.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
-    self.txtEmail.frame = CGRectMake(self.background.frame.origin.x +40, self.txtName.frame.origin.y+self.txtEmail.frame.size.height, self.txtEmail.frame.size.width, self.txtEmail.frame.size.height);
+    self.txtEmail.frame = CGRectMake(self.background.frame.origin.x +40, self.txtName.frame.origin.y+self.txtEmail.frame.size.height + 10, self.txtEmail.frame.size.width, self.txtEmail.frame.size.height);
     self.txtEmail.keyboardType = UIKeyboardTypeEmailAddress;
     self.txtEmail.tag = 2;
     self.txtEmail.returnKeyType = UIReturnKeyNext;
+    self.txtEmail.layer.cornerRadius = 5;
+    [self.textFieldsArray addObject:self.txtEmail];
     [self.scrollView addSubview:self.txtEmail];
     
     
-    self.txtPassword = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, self.background.image.size.width, txtFieldHeight)];
+    self.txtPassword = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, self.background.image.size.width - 45, txtFieldHeight - 10)];
     self.txtPassword.placeholder = @"Password";
     self.txtPassword.textColor = [UIColor colorWithRed:17.0f/255.0f green:46.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
-    
+    self.txtPassword.layer.cornerRadius = 5;
     self.txtPassword.font = [UIFont fontWithName:@"Avenir-Medium" size:14];
-    self.txtPassword.frame = CGRectMake(self.background.frame.origin.x + 40 , self.txtEmail.frame.origin.y+self.txtPassword.frame.size.height, self.txtPassword.frame.size.width, self.txtPassword.frame.size.height);
+    self.txtPassword.frame = CGRectMake(self.background.frame.origin.x + 40 , self.txtEmail.frame.origin.y+self.txtPassword.frame.size.height + 10, self.txtPassword.frame.size.width, self.txtPassword.frame.size.height);
     self.txtPassword.secureTextEntry = YES;
     self.txtPassword.tag = 3;
     self.txtPassword.returnKeyType = UIReturnKeyNext;
+    [self.textFieldsArray addObject:self.txtPassword];
     [self.scrollView addSubview:self.txtPassword];
     
     
     
-    self.txtRepPassword = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, self.background.image.size.width, txtFieldHeight)];
+    self.txtRepPassword = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, self.background.image.size.width - 45, txtFieldHeight - 10)];
     self.txtRepPassword.placeholder = @"Repeat password";
     self.txtRepPassword.textColor = [UIColor colorWithRed:17.0f/255.0f green:46.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
-    
+    self.txtRepPassword.layer.cornerRadius = 5;
     self.txtRepPassword.font = [UIFont fontWithName:@"Avenir-Medium" size:14];
-    self.txtRepPassword.frame = CGRectMake(self.background.frame.origin.x + 40 , self.txtPassword.frame.origin.y+self.txtRepPassword.frame.size.height, self.txtRepPassword.frame.size.width, self.txtRepPassword.frame.size.height);
+    self.txtRepPassword.frame = CGRectMake(self.background.frame.origin.x + 40 , self.txtPassword.frame.origin.y+self.txtRepPassword.frame.size.height + 10, self.txtRepPassword.frame.size.width, self.txtRepPassword.frame.size.height);
     self.txtRepPassword.secureTextEntry = YES;
     self.txtRepPassword.tag = 4;
     self.txtEmail.returnKeyType = UIReturnKeyDone;
+    [self.textFieldsArray addObject:self.txtRepPassword];
     [self.scrollView addSubview:self.txtRepPassword];
     
     
@@ -146,6 +156,19 @@
     return YES;
 }
 
+- (void)errorRegister{
+    
+    CABasicAnimation *shake = [CABasicAnimation animationWithKeyPath:@"position"];
+    [shake setDuration:0.1];
+    [shake setRepeatCount:2];
+    [shake setAutoreverses:YES];
+    [shake setFromValue:[NSValue valueWithCGPoint:
+                         CGPointMake(self.btnRegister.center.x - 5,self.btnRegister.center.y)]];
+    [shake setToValue:[NSValue valueWithCGPoint:
+                       CGPointMake(self.btnRegister.center.x + 5, self.btnRegister.center.y)]];
+    [self.btnRegister.layer addAnimation:shake forKey:@"position"];
+    
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

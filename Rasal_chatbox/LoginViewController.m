@@ -72,12 +72,8 @@
                 [self dismissViewControllerAnimated:YES completion:^{}];
                 
             }else{
-                
-                
                 [self.view errorLogin];
-                
                 [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isUserLoggedIn"];
-                
             }
         }else{
             NSLog(@"Error Json");
