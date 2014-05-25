@@ -181,8 +181,18 @@
     
     User *selectedUser = [self.users objectAtIndex:indexPath.row];
     
-    self.chatVC = [[ChatViewController alloc] initWithNibName:nil bundle:nil andChatVenster:selectedUser andAllMessages:self.messages];
-    [self.navigationController pushViewController:self.chatVC animated:YES];
+    for (User * user in self.users) {
+        
+        if(user.identifier == [[NSUserDefaults standardUserDefaults]integerForKey:@"current_user"]){
+            
+            self.chatVC = [[ChatViewController alloc] initWithNibName:nil bundle:nil andChatVenster:selectedUser andMe:user andAllMessages:self.messages];
+            [self.navigationController pushViewController:self.chatVC animated:YES];
+            
+        }
+        
+    }
+    
+    
     
 }
 
