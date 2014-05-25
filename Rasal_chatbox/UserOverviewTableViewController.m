@@ -20,7 +20,6 @@
     if (self) {
         // Custom initialization
         self.title = @"Rasal";
-        self.users = [NSMutableArray array];
         
         UIButton *logoutBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [logoutBtn setBackgroundImage:[UIImage imageNamed:@"logout_btn"] forState:UIControlStateNormal];
@@ -242,7 +241,10 @@
             }
             
             
+            self.users = [NSMutableArray array];
+            
             [self loadUsers];
+            
         }
     }
     

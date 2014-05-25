@@ -32,19 +32,42 @@
     
     NSLog(@"%@",self.messages);
     
-    int yPos = 20;
+    int yPos = 40;
+    
+    UIImage *clock = [UIImage imageNamed:@"watch"];
     
     for (Messages *message in self.messages) {
         
-        UILabel *user_message_lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 360, 30)];
+        UILabel *user_message_lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 150, 100)];
         user_message_lbl.text = message.message;
-        [user_message_lbl setBackgroundColor:[UIColor colorWithRed:0.92 green:0.92 blue:0.92 alpha:1]];
+        [user_message_lbl setBackgroundColor:[UIColor whiteColor]];
         user_message_lbl.center = CGPointMake(self.frame.size.width / 2, yPos);
         user_message_lbl.layer.cornerRadius = 10;
         user_message_lbl.numberOfLines = 0;
         [self.scrollVW addSubview:user_message_lbl];
         
-        yPos += user_message_lbl.frame.size.height + 10;
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        
+        [dateFormatter setDateFormat:@"h:mm a"];
+        
+        NSString *dateInString = [dateFormatter stringFromDate:message.current_date];
+        
+        
+        UIImageView *image = [[UIImageView alloc]initWithImage:clock];
+        image.center = CGPointMake(user_message_lbl.frame.origin.x + 10, user_message_lbl.frame.origin.y + user_message_lbl.frame.size.height - image.frame.size.height - 10);
+        [self.scrollVW addSubview:image];
+        
+        
+        UILabel *hour = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 20)];
+        hour.text = dateInString;
+        hour.center = CGPointMake(image.frame.origin.x + image.frame.size.width + 5 , image.frame.origin.y);
+        hour.numberOfLines = 0;
+        [self.scrollVW addSubview:hour];
+        
+        yPos += user_message_lbl.frame.size.height + 5;
+        
+        
+        
     }
     
     self.scrollVW.contentSize = CGSizeMake(0, yPos);
