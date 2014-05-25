@@ -223,6 +223,36 @@
     
     [operation start];    
 }
+-(void)viewDidAppear:(BOOL)animated{
+    
+    if([[NSUserDefaults standardUserDefaults]boolForKey:@"isUserLoggedIn"] == NO){
+        
+        NSLog(@"NOT LOGGED IN");
+        
+        LoginViewController *loginVC = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
+        [self presentViewController:loginVC animated:YES completion:^{}];
+        
+    }else{
+        
+        if([[NSUserDefaults standardUserDefaults]integerForKey:@"current_user"]){
+            
+            NSInteger current_user_id = [[NSUserDefaults standardUserDefaults] integerForKey:@"current_user"];
+            
+            for (User*user in self.users) {
+        
+                
+                if(user.identifier == current_user_id){
+                    
+                    
+                    NSLog(@"current_user is %@",user.voornaam);
+                }
+                
+            }
+            
+        }
+    }
+    
+}
 
 - (void)loadMessages{
     
@@ -263,6 +293,8 @@
 
 - (void)logoutBtnTapped:(id)sender{
     NSLog(@"Log out");
+    
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isUserLoggedIn"];
     
     LoginViewController *loginVC = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
     [self presentViewController:loginVC animated:YES completion:^{}];
