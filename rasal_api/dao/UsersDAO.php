@@ -13,6 +13,21 @@ class UsersDAO
         $this->pdo = DatabasePDO::getInstance();
     }
 
+    public function insertUser($email, $password, $naam, $voornaam, $profilePic){
+        $sql = "INSERT INTO `rasal_users`(`email`, `password`, `naam`, `voornaam`, `profilePic`) 
+                VALUES (:email, :password, :naam, :voornaam, :profilePic);";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(":email",$email);
+        $stmt->bindValue(":password", sha1($salt + $password));
+        $stmt->bindValue(":naam",$naam);
+        $stmt->bindValue(":voornaam",$voornaam);
+        $stmt->bindValue(":profilePic",$profilePic);
+        if($stmt->execute()){
+            return $this->getUsersById($this->pdo->lastInsertId());
+        }
+        return false;
+    }
+
     public function getUserByEmailAndPassword($email, $password){
         $sql = "SELECT * FROM `rasal_users` 
                 WHERE `email` = :email 
@@ -43,7 +58,7 @@ class UsersDAO
         return array();
     }
 
-    public function getUsersById($id){
+    public function getUserById($id){
         $sql = "SELECT * 
                 FROM `rasal_users`
                 WHERE id = :id";

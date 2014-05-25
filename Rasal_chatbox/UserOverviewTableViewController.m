@@ -223,7 +223,7 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
     
-    if([[NSUserDefaults standardUserDefaults]boolForKey:@"isUserLoggedIn"] == NO){
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"isUserLoggedIn"] == NO){
         
         NSLog(@"NOT LOGGED IN");
         
@@ -235,18 +235,12 @@
         if([[NSUserDefaults standardUserDefaults]integerForKey:@"current_user"]){
             
             NSInteger current_user_id = [[NSUserDefaults standardUserDefaults] integerForKey:@"current_user"];
-            
+    
             for (User*user in self.users) {
-        
-                
                 if(user.identifier == current_user_id){
-                    
-                    
                     NSLog(@"current_user is %@",user.voornaam);
                 }
-                
             }
-            
         }
     }
     

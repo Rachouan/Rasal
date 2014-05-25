@@ -154,8 +154,7 @@
     
     
     if(![self.view.sendMessageTxt.text  isEqual:  @""]){
-    
-    
+        
     NSString *path = @"http://volpesalvatore.be/rasal/api/insertMessage";
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -169,11 +168,8 @@
           failure:^(AFHTTPRequestOperation *operation, NSError *error) { NSLog(@"Error: %@", error); }
      ];
     
-        
         self.view.sendMessageTxt.text = @"";
-        
         [self loadAllMessages];
-        
         
     }else{
         
