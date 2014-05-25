@@ -11,8 +11,12 @@
 @interface RegisterView : UIView
 
 @property (nonatomic,strong) UIImageView *background;
-@property (nonatomic,strong) UITextField *txtUsername;
+@property (nonatomic,strong) UITextField *txtName;
+@property (nonatomic,strong) UITextField *txtLastname;
+@property (nonatomic,strong) UITextField *txtEmail;
 @property (nonatomic,strong) UITextField *txtPassword;
+@property (nonatomic,strong) UITextField *txtRepPassword;
 @property (nonatomic,strong) UIButton *btnRegister;
+@property (nonatomic, strong) UIButton * upload;
 
 @end
