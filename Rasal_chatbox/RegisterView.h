@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RegisterView : UIView
+@interface RegisterView : UIView<UITextFieldDelegate>
 
 @property (nonatomic,strong) UIImageView *background;
 @property (nonatomic,strong) UITextField *txtName;

@@ -64,6 +64,8 @@
     self.txtLastname.textColor = [UIColor colorWithRed:17.0f/255.0f green:46.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
     self.txtLastname.frame = CGRectMake(self.background.frame.origin.x +40, self.background.frame.origin.y, self.txtLastname.frame.size.width, self.txtLastname.frame.size.height);
     self.txtLastname.keyboardType = UIKeyboardTypeEmailAddress;
+    self.txtLastname.tag = 0;
+    self.txtLastname.returnKeyType = UIReturnKeyNext;
     [self.scrollView addSubview:self.txtLastname];
     
     
@@ -73,6 +75,8 @@
     self.txtName.textColor = [UIColor colorWithRed:17.0f/255.0f green:46.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
     self.txtName.frame = CGRectMake(self.background.frame.origin.x +40, self.txtLastname.frame.origin.y+self.txtName.frame.size.height, self.txtName.frame.size.width, self.txtName.frame.size.height);
     self.txtName.keyboardType = UIKeyboardTypeEmailAddress;
+    self.txtName.tag = 1;
+    self.txtName.returnKeyType = UIReturnKeyNext;
     [self.scrollView addSubview:self.txtName];
     
     
@@ -82,6 +86,8 @@
     self.txtEmail.textColor = [UIColor colorWithRed:17.0f/255.0f green:46.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
     self.txtEmail.frame = CGRectMake(self.background.frame.origin.x +40, self.txtName.frame.origin.y+self.txtEmail.frame.size.height, self.txtEmail.frame.size.width, self.txtEmail.frame.size.height);
     self.txtEmail.keyboardType = UIKeyboardTypeEmailAddress;
+    self.txtEmail.tag = 2;
+    self.txtEmail.returnKeyType = UIReturnKeyNext;
     [self.scrollView addSubview:self.txtEmail];
     
     
@@ -92,6 +98,8 @@
     self.txtPassword.font = [UIFont fontWithName:@"Avenir-Medium" size:14];
     self.txtPassword.frame = CGRectMake(self.background.frame.origin.x + 40 , self.txtEmail.frame.origin.y+self.txtPassword.frame.size.height, self.txtPassword.frame.size.width, self.txtPassword.frame.size.height);
     self.txtPassword.secureTextEntry = YES;
+    self.txtPassword.tag = 3;
+    self.txtPassword.returnKeyType = UIReturnKeyNext;
     [self.scrollView addSubview:self.txtPassword];
     
     
@@ -103,6 +111,8 @@
     self.txtRepPassword.font = [UIFont fontWithName:@"Avenir-Medium" size:14];
     self.txtRepPassword.frame = CGRectMake(self.background.frame.origin.x + 40 , self.txtPassword.frame.origin.y+self.txtRepPassword.frame.size.height, self.txtRepPassword.frame.size.width, self.txtRepPassword.frame.size.height);
     self.txtRepPassword.secureTextEntry = YES;
+    self.txtRepPassword.tag = 4;
+    self.txtEmail.returnKeyType = UIReturnKeyDone;
     [self.scrollView addSubview:self.txtRepPassword];
     
     
@@ -119,10 +129,21 @@
     self.btnRegister.titleLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:12];
     [self.btnRegister setTitle:@"Register" forState:UIControlStateNormal];
     [self.scrollView addSubview:self.btnRegister];
-    
-    self.btnRegister.layer.cornerRadius = 10; // this value vary as per your desire
+    self.btnRegister.layer.cornerRadius = 10;
+    self.btnRegister.tag = 5;
     self.btnRegister.clipsToBounds = YES;
     
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)sender
+{
+    if(sender.returnKeyType == UIReturnKeyNext){
+        // Make something else first responder
+    }else if(sender.returnKeyType == UIReturnKeyGo){
+        // Do something
+    }else{
+        [sender resignFirstResponder];
+    }
+    return YES;
 }
 
 
