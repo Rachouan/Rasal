@@ -35,7 +35,7 @@
         
         self.upload = [UIButton buttonWithType:UIButtonTypeCustom];
         self.upload.frame = CGRectMake(0, 0, upload.size.width, upload.size.height);
-        self.upload.center = CGPointMake(self.frame.size.width/2, mainLabel.frame.origin.y - self.upload.frame.size.height/2 - 10);
+        self.upload.center = CGPointMake(self.frame.size.width/2, mainLabel.frame.origin.y - self.upload.frame.size.height/2 - 20);
         [self.upload setBackgroundImage:upload forState:UIControlStateNormal];
         [self addSubview:self.upload];
         
@@ -47,7 +47,7 @@
 -(void)createBackground{
     
     self.background = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"register"]];
-    self.background.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 60);
+    self.background.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 40);
     [self addSubview:self.background];
     
 }
