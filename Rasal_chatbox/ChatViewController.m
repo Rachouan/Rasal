@@ -81,7 +81,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSDictionary *params = @{@"message": self.view.sendMessageTxt.text,
                              @"user_id": [NSString stringWithFormat:@"%d", 1],
-                             @"compagnion_id": [NSString stringWithFormat:@"%d", self.selectedUser.identifier]};
+                             @"compagnion_id": [NSString stringWithFormat:@"%ldd",(long) (long)self.selectedUser.identifier]};
     
     [manager POST:path
           parameters:params
@@ -96,6 +96,10 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    NSLog(@"WILL APPEAR");
 }
 
 /*

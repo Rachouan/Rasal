@@ -34,7 +34,7 @@
     
     for (Messages *message in self.messages) {
         
-        NSLog(@"%d, %d", message.compagnion_id, message.user_id);
+        NSLog(@"%ld, %ld", (long)message.compagnion_id, (long)message.user_id);
         
         UILabel *user_message_lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width - 20, 30)];
         user_message_lbl.text = message.message;
