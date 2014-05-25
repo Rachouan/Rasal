@@ -17,8 +17,7 @@
         // Initialization code
         self.backgroundColor = [UIColor whiteColor];
         
-        
-        self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+        self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, - 64, frame.size.width, frame.size.height + 64)];
         self.scrollView.contentSize = CGSizeMake(frame.size.width, frame.size.height);
         [self addSubview:self.scrollView];
         
