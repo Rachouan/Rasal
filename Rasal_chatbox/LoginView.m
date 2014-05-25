@@ -95,7 +95,7 @@
     [self addSubview:self.btnRegister];
     
     self.btnRegister.layer.cornerRadius = 10; // this value vary as per your desire
-    //[self.btnRegister setImage:[UIImage imageNamed:@"lock"] forState:UIControlStateNormal];
+    [self.btnRegister setImage:[UIImage imageNamed:@"lock"] forState:UIControlStateNormal];
     self.btnRegister.clipsToBounds = YES;
     
 }
