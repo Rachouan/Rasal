@@ -17,8 +17,10 @@
         // Initialization code
         self.backgroundColor = [UIColor whiteColor];
         
-        self.scrollVW = [[UIScrollView alloc]initWithFrame:frame];
+        self.scrollVW = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height - 80)];
         [self addSubview:self.scrollVW];
+        
+        [self createSender];
         
     }
     return self;
@@ -34,8 +36,6 @@
     
     for (Messages *message in self.messages) {
         
-        NSLog(@"%d, %d", message.compagnion_id, message.user_id);
-        
         UILabel *user_message_lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width - 20, 30)];
         user_message_lbl.text = message.message;
         [user_message_lbl setBackgroundColor:[UIColor colorWithRed:0.92 green:0.92 blue:0.92 alpha:1]];
@@ -48,8 +48,14 @@
     
     self.scrollVW.contentSize = CGSizeMake(0, yPos);
     
-    [self createSender];
+    
+    CGPoint bottomOffset = CGPointMake(0, self.scrollVW.contentSize.height - self.scrollVW.bounds.size.height);
+    [self.scrollVW setContentOffset:bottomOffset animated:NO];
+    
+    
 }
+
+
 
 - (void)createSender{
     
@@ -57,6 +63,7 @@
     self.sendMessageTxt.layer.borderWidth = 1;
     self.sendMessageTxt.layer.borderColor = [UIColor colorWithRed:0.72 green:0.72 blue:0.72 alpha:1].CGColor;
     self.sendMessageTxt.layer.cornerRadius = 10;
+    self.sendMessageTxt.backgroundColor = [UIColor whiteColor];
     self.sendMessageTxt.center = CGPointMake((self.frame.size.width) / 2, (self.frame.size.height - self.sendMessageTxt.frame.size.height));
     [self addSubview:self.sendMessageTxt];
     

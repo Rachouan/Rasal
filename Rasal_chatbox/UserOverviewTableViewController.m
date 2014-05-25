@@ -23,7 +23,6 @@
         self.users = [NSMutableArray array];
         
         [self loadUsers];
-        [self loadMessages];
         
         UIButton *logoutBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [logoutBtn setBackgroundImage:[UIImage imageNamed:@"logout_btn"] forState:UIControlStateNormal];
@@ -67,7 +66,6 @@
     [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
 
     [self.tableView registerClass:[UserOverviewTableViewCell class] forCellReuseIdentifier:@"userCell"];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadMessages) name:@"reload_chat" object:nil];
 
 }
 - (void)refreshTable {
@@ -223,46 +221,41 @@
     
     [operation start];    
 }
-
-- (void)loadMessages{
+-(void)viewDidAppear:(BOOL)animated{
     
-    self.messages = [NSMutableArray array];
-    
-    NSString *path = @"http://volpesalvatore.be/rasal/api/messages";
-    
-    NSURL *url = [NSURL URLWithString:path];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
-    operation.responseSerializer = [AFJSONResponseSerializer serializer];
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    if([[NSUserDefaults standardUserDefaults]boolForKey:@"isUserLoggedIn"] == NO){
         
-    NSError *error = nil;
-    NSDictionary *loadedData = (NSDictionary *)responseObject;
+        NSLog(@"NOT LOGGED IN");
         
-        if(!error){
-            for (NSDictionary *dict in loadedData) {
-                Messages *message = [MessageFactory createMessageWithDictionarry:dict];
-                [self.messages addObject:message];
+        LoginViewController *loginVC = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
+        [self presentViewController:loginVC animated:YES completion:^{}];
+        
+    }else{
+        
+        if([[NSUserDefaults standardUserDefaults]integerForKey:@"current_user"]){
+            
+            NSInteger current_user_id = [[NSUserDefaults standardUserDefaults] integerForKey:@"current_user"];
+            
+            for (User*user in self.users) {
+        
+                
+                if(user.identifier == current_user_id){
+                    
+                    
+                    NSLog(@"current_user is %@",user.voornaam);
+                }
+                
             }
-        }else{
-            NSLog(@"Error Json");
+            
         }
-        
-    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error Loading data");
-    }];
-    
-    [operation start];
-    
-    
-    if (self.chatVC != nil) {
-        [self.chatVC viewWillAppear:YES];
     }
+    
 }
 
 - (void)logoutBtnTapped:(id)sender{
     NSLog(@"Log out");
+    
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isUserLoggedIn"];
     
     LoginViewController *loginVC = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
     [self presentViewController:loginVC animated:YES completion:^{}];

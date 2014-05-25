@@ -46,6 +46,8 @@
     NSURL *url = [NSURL URLWithString:loginPath];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
+    [self.view endEditing:YES];
+    
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -63,17 +65,19 @@
     
                 self.current_user = [UserFactory createUserWithDictionary:loadedData];
                 
-                NSLog(@"%@", [self currentUserArchivePath]);
+                NSLog(@"CORRECT");
                 
-                if([self save]){
-                    NSLog(@"[LOGIN] Data object saved at %@", [self currentUserArchivePath]);
-                }else{
-                    NSLog(@"Data not saved");
-                }
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isUserLoggedIn"];
+                [[NSUserDefaults standardUserDefaults] setInteger:self.current_user.identifier forKey:@"current_user"];
+                [self dismissViewControllerAnimated:YES completion:^{}];
                 
             }else{
+                
+                
                 [self.view errorLogin];
-                [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"current_user"];
+                
+                [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isUserLoggedIn"];
+                
             }
         }else{
             NSLog(@"Error Json");
@@ -81,6 +85,7 @@
         
     }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error Loading data");
+        [self.view errorLogin];
     }];
     
     [operation start];
