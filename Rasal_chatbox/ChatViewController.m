@@ -76,6 +76,9 @@
 - (void)sendMessage:(id)sender{
     self.messages = [NSMutableArray array];
     
+    if(![self.view.sendMessageTxt.text  isEqual:  @""]){
+    
+    
     NSString *path = @"http://volpesalvatore.be/rasal/api/insertMessage";
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -90,6 +93,12 @@
      ];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reload_chat" object:self];
+        
+        
+    }else{
+        
+        NSLog(@"Type something");
+    }
 }
 
 - (void)didReceiveMemoryWarning

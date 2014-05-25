@@ -46,6 +46,8 @@
     NSURL *url = [NSURL URLWithString:loginPath];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
+    [self.view endEditing:YES];
+    
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -81,6 +83,7 @@
         
     }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error Loading data");
+        [self.view errorLogin];
     }];
     
     [operation start];

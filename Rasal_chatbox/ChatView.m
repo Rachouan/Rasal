@@ -17,7 +17,7 @@
         // Initialization code
         self.backgroundColor = [UIColor whiteColor];
         
-        self.scrollVW = [[UIScrollView alloc]initWithFrame:frame];
+        self.scrollVW = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height - 80)];
         [self addSubview:self.scrollVW];
         
     }
