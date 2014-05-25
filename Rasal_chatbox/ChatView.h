@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "Messages.h"
+#import "User.h"
 
 @interface ChatView : UIView
 
@@ -18,7 +19,11 @@
 @property (nonatomic, strong) UITextField *sendMessageTxt;
 @property (nonatomic, strong) UIButton *sendMessageBtn;
 @property (nonatomic, strong) CAShapeLayer * rectangle;
+@property (nonatomic, strong) User * selectedUser;
+@property (nonatomic, strong) User * me;
 
 -(void)reloadChat:(NSMutableArray *)array;
+
+- (id)initWithFrame:(CGRect)frame andSelectedUser:(User*)selected_user andMe:(User*)me;
 
 @end

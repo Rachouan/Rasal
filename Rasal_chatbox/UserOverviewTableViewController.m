@@ -20,9 +20,6 @@
     if (self) {
         // Custom initialization
         self.title = @"Rasal";
-        self.users = [NSMutableArray array];
-        
-        [self loadUsers];
         
         UIButton *logoutBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [logoutBtn setBackgroundImage:[UIImage imageNamed:@"logout_btn"] forState:UIControlStateNormal];
@@ -184,8 +181,18 @@
     
     User *selectedUser = [self.users objectAtIndex:indexPath.row];
     
-    self.chatVC = [[ChatViewController alloc] initWithNibName:nil bundle:nil andChatVenster:selectedUser andAllMessages:self.messages];
-    [self.navigationController pushViewController:self.chatVC animated:YES];
+    for (User * user in self.users) {
+        
+        if(user.identifier == [[NSUserDefaults standardUserDefaults]integerForKey:@"current_user"]){
+            
+            self.chatVC = [[ChatViewController alloc] initWithNibName:nil bundle:nil andChatVenster:selectedUser andMe:user andAllMessages:self.messages];
+            [self.navigationController pushViewController:self.chatVC animated:YES];
+            
+        }
+        
+    }
+    
+    
     
 }
 
@@ -242,6 +249,12 @@
                     NSLog(@"current_user is %@",user.voornaam);
                 }
             }
+            
+            
+            self.users = [NSMutableArray array];
+            
+            [self loadUsers];
+            
         }
     }
     

@@ -14,7 +14,7 @@
 
 @implementation ChatViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andChatVenster:(User*)selectedUser andAllMessages:(NSMutableArray *)messages
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andChatVenster:(User*)selectedUser andMe:(User *)me andAllMessages:(NSMutableArray *)messages
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -22,12 +22,13 @@
         self.title = [NSString stringWithFormat:@"%@", selectedUser.voornaam];
         
         self.selectedUser = selectedUser;
+        self.me = me;
         
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:
                                     [self methodSignatureForSelector: @selector(timerCallback)]];
         [invocation setTarget:self];
         [invocation setSelector:@selector(timerCallback)];
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 invocation:invocation repeats:NO];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:2.0 invocation:invocation repeats:NO];
 
         
         
@@ -78,7 +79,7 @@
 
 - (void)loadView{
     CGRect bounds = [UIScreen mainScreen].bounds;
-    self.view = [[ChatView alloc] initWithFrame:bounds];
+    self.view = [[ChatView alloc] initWithFrame:bounds andSelectedUser:self.selectedUser andMe:self.me];
 }
 
 - (void)viewDidLoad
