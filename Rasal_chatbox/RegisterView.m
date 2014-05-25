@@ -17,6 +17,11 @@
         // Initialization code
         self.backgroundColor = [UIColor whiteColor];
         
+        
+        self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+        self.scrollView.contentSize = CGSizeMake(frame.size.width, frame.size.height);
+        [self addSubview:self.scrollView];
+        
         [self createBackground];
         [self createTextFields];
         [self createButton];
@@ -27,7 +32,7 @@
         mainLabel.text = @"Upload a  picture";
         [mainLabel setTextAlignment:NSTextAlignmentCenter];
         mainLabel.textColor = [UIColor colorWithRed:234.0/255.0 green:84.0/255.0 blue:78.0/255.0 alpha:1.0];
-        [self addSubview:mainLabel];
+        [self.scrollView addSubview:mainLabel];
         
         UIImage *upload = [UIImage imageNamed:@"upload"];
         
@@ -35,11 +40,8 @@
         self.upload.frame = CGRectMake(0, 0, upload.size.width, upload.size.height);
         self.upload.center = CGPointMake(self.frame.size.width/2, mainLabel.frame.origin.y - self.upload.frame.size.height/2 - 20);
         [self.upload setBackgroundImage:upload forState:UIControlStateNormal];
-        [self addSubview:self.upload];
+        [self.scrollView addSubview:self.upload];
         
-        self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-        self.scrollView.contentSize = CGSizeMake(frame.size.width, frame.size.height);
-        [self addSubview:self.scrollView];
     }
     return self;
 }
