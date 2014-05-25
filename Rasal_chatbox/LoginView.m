@@ -77,13 +77,21 @@
     self.btnLogin.clipsToBounds = YES;
     
     
+    UILabel *mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 220.0, 20)];
+    mainLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:14];
+    mainLabel.center = CGPointMake(self.frame.size.width/2 - 40, self.frame.size.height - mainLabel.frame.size.height - 20);
+    mainLabel.text = @"Don't have an account?";
+    [mainLabel setTextAlignment:NSTextAlignmentCenter];
+    mainLabel.textColor = [UIColor colorWithRed:17.0f/255.0f green:46.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
+    [self addSubview:mainLabel];
+    
     // Register
     self.btnRegister = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.btnRegister.frame = CGRectMake(0, 0, 150, 40);
-    self.btnRegister.center = CGPointMake(self.frame.size.width/2, self.txtPassword.frame.origin.y + self.txtPassword.frame.size.height +117);
-    [self.btnRegister setBackgroundColor:[UIColor colorWithRed:234.0/255.0 green:84.0/255.0 blue:78.0/255.0 alpha:1.0]];
-    self.btnRegister.titleLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:12];
-    [self.btnRegister setTitle:@"Register" forState:UIControlStateNormal];
+    self.btnRegister.frame = CGRectMake(0, 0, 100, 20);
+    self.btnRegister.center = CGPointMake(mainLabel.frame.origin.x + mainLabel.frame.size.width + 5,mainLabel.frame.origin.y + self.btnRegister.frame.size.height/2);
+    [self.btnRegister setTitleColor:[UIColor colorWithRed:234.0/255.0 green:84.0/255.0 blue:78.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+    self.btnRegister.titleLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:14];
+    [self.btnRegister setTitle:@"Create one" forState:UIControlStateNormal];
     [self addSubview:self.btnRegister];
     
     self.btnRegister.layer.cornerRadius = 10; // this value vary as per your desire
