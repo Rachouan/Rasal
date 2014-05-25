@@ -82,8 +82,8 @@
                  
                  NSLog(@"%@", self.current_user);
              
-                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isUserLoggedIn"];
-                 [[NSUserDefaults standardUserDefaults] setInteger:self.current_user.identifier forKey:@"current_user"];
+                 /*[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isUserLoggedIn"];
+                 [[NSUserDefaults standardUserDefaults] setInteger:self.current_user.identifier forKey:@"current_user"];*/
             
              }
              failure:^(AFHTTPRequestOperation *operation, NSError *error) { NSLog(@"Error: %@", error);}
