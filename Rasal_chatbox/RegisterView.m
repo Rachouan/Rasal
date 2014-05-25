@@ -30,7 +30,7 @@
         UILabel *mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 220.0, 20)];
         mainLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:20];
         mainLabel.center = CGPointMake(frame.size.width/2, self.background.frame.origin.y - mainLabel.frame.size.height - 10);
-        mainLabel.text = @"Upload a  picture";
+        mainLabel.text = @"Upload a picture";
         [mainLabel setTextAlignment:NSTextAlignmentCenter];
         mainLabel.textColor = [UIColor colorWithRed:234.0/255.0 green:84.0/255.0 blue:78.0/255.0 alpha:1.0];
         [self.scrollView addSubview:mainLabel];

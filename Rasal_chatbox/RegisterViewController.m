@@ -45,6 +45,13 @@
     // Do any additional setup after loading the view.
     
     [self.view.btnRegister addTarget:self action:@selector(registerBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view.upload addTarget:self action:@selector(addOrTakePicture:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)addOrTakePicture:(id)sender{
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Way to upload your profile picture" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Take picture" otherButtonTitles:@"Choose a picture", nil];
+    [actionSheet showInView:self.view];
 }
 
 - (void)registerBtnTapped:(id)sender{
@@ -108,6 +115,86 @@
         [textField resignFirstResponder];
     }
     return NO; // We do not want UITextField to insert line-breaks.
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"%d", buttonIndex);
+    
+    switch (buttonIndex) {
+        case 0:
+            [self takePicture];
+            break;
+        case 1:
+            [self chooseAPicture];
+            break;
+        case 2:
+            [actionSheet dismissWithClickedButtonIndex:2 animated:YES];
+            break;
+    }
+}
+
+- (void)takePicture{
+    NSLog(@"Take Picture");
+    
+    self.cameraImagePC = [[UIImagePickerController alloc] init];
+    self.cameraImagePC.sourceType = UIImagePickerControllerSourceTypeCamera;
+    self.cameraImagePC.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+   // self.cameraImagePC.cameraOverlayView = [self loadViewForTakingPicture];
+   // self.cameraImagePC.showsCameraControls = NO;
+    
+    [self presentViewController:self.cameraImagePC animated:YES completion:^{}];
+    self.cameraImagePC.delegate = self;
+}
+
+- (void)chooseAPicture{
+    NSLog(@"Choose Picture");
+    UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:imagePicker animated:YES completion:^{}];
+    imagePicker.delegate = self;
+}
+
+/*- (void)shotPicture:(id)sender{
+    [self.cameraImagePC takePicture];
+}
+
+- (UIView *)loadViewForTakingPicture{
+    
+    int heightBtn = 80;
+    
+    UIView *overlayShotPicture = [[UIView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - heightBtn), self.view.frame.size.width, heightBtn)];
+    [self.view addSubview:overlayShotPicture];
+    
+    UIImage *upload = [UIImage imageNamed:@"upload"];
+    
+    UIButton *takePicture= [UIButton buttonWithType:UIButtonTypeCustom];
+    [takePicture setBackgroundImage:upload forState:UIControlStateNormal];
+    takePicture.frame = CGRectMake(0, 0, upload.size.width, upload.size.height);
+    [takePicture setBackgroundColor:[UIColor whiteColor]];
+//    takePicture.center = CGPointMake(self.view.frame.size.width / 2, (self.view.frame.size.height - upload.size.height) - 50);
+    takePicture.center = CGPointMake(self.view.frame.size.width / 2, 200);
+    [overlayShotPicture addSubview:takePicture];
+    
+    [takePicture addTarget:self action:@selector(shotPicture:) forControlEvents:UIControlEventTouchUpInside];
+    
+    return overlayShotPicture;
+}
+*/
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    
+    self.current_user_image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    self.current_user_image_data = [[NSData alloc] initWithContentsOfURL:[info objectForKey:UIImagePickerControllerReferenceURL]];
+    
+    [self updatePictureOnRegisterView];
+    [picker dismissViewControllerAnimated:YES completion:^{}];
+}
+
+- (void)updatePictureOnRegisterView{
+    NSLog(@"Update Picture");
+    [self.view.upload setBackgroundImage:self.current_user_image forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning

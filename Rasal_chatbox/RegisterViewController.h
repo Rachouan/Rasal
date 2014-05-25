@@ -14,11 +14,16 @@
 //#import "UserOverviewTableViewController.h"
 
 
-@interface RegisterViewController : UIViewController
+@interface RegisterViewController : UIViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) User *current_user;
 @property (nonatomic, strong) RegisterView *view;
 
 @property (nonatomic, strong) NSMutableArray *notEmptyTextfieldsArray;
+
+@property (nonatomic, strong) UIImagePickerController *cameraImagePC;
+
+@property (nonatomic, strong) UIImage *current_user_image;
+@property (nonatomic, strong) NSData *current_user_image_data;
 
 @end
