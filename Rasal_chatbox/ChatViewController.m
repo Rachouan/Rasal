@@ -99,10 +99,18 @@
 - (void)animateScrollToViewTextField:(id)sender{
     NSLog(@"Did tapped Textfield");
     
+    
+    CGRect bounds = [UIScreen mainScreen].bounds;
+    
     [UIView animateWithDuration:0.3
                      animations:^{
                          self.view.sendMessageTxt.center = CGPointMake(self.view.frame.size.width / 2, 320);
                          self.view.sendMessageBtn.center = CGPointMake(self.view.frame.size.width - 36, self.view.sendMessageTxt.frame.origin.y + 20);
+                         
+                         self.view.scrollVW.frame = CGRectMake(0, 0, bounds.size.width, 320);
+                         
+                         CGPoint bottomOffset = CGPointMake(0, self.view.scrollVW.contentSize.height - self.view.scrollVW.bounds.size.height);
+                         [self.view.scrollVW setContentOffset:bottomOffset animated:NO];
                      }
                      completion:^(BOOL finished){
                          
@@ -113,12 +121,16 @@
 - (void)animateScrollToViewTextFieldBack:(id)sender{
     NSLog(@"Did tapped Textfield");
     
+    CGRect bounds = [UIScreen mainScreen].bounds;
+    
     [UIView animateWithDuration:0.3
                      animations:^{
                          
                          self.view.sendMessageTxt.enabled = NO;
                          self.view.sendMessageTxt.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height - self.view.sendMessageTxt.frame.size.height - 20);
-                         self.view.sendMessageBtn.center = CGPointMake(self.view.sendMessageTxt.frame.origin.x + self.view.sendMessageTxt.frame.size.width - self.view.sendMessageBtn.frame.size.width - 5, self.view.sendMessageTxt.frame.origin.y + 20);
+                         self.view.sendMessageBtn.center = CGPointMake(self.view.sendMessageTxt.frame.origin.x + self.view.sendMessageTxt.frame.size.width - self.view.sendMessageBtn.frame.size.width/2 - 5, self.view.sendMessageTxt.frame.origin.y + 20);
+                         
+                         self.view.scrollVW.frame = CGRectMake(0, 0, bounds.size.width, bounds.size.height - 80);
                      }
                      completion:^(BOOL finished){
                          
