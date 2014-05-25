@@ -21,8 +21,6 @@
         [self createTextFields];
         [self createButton];
         
-        
-        
         UILabel *mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 220.0, 20)];
         mainLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:20];
         mainLabel.center = CGPointMake(frame.size.width/2, self.background.frame.origin.y - mainLabel.frame.size.height - 10);
@@ -39,7 +37,9 @@
         [self.upload setBackgroundImage:upload forState:UIControlStateNormal];
         [self addSubview:self.upload];
         
-        
+        self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+        self.scrollView.contentSize = CGSizeMake(frame.size.width, frame.size.height);
+        [self addSubview:self.scrollView];
     }
     return self;
 }
@@ -48,7 +48,7 @@
     
     self.background = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"register"]];
     self.background.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 + 40);
-    [self addSubview:self.background];
+    [self.scrollView addSubview:self.background];
     
 }
 
@@ -63,46 +63,46 @@
     self.txtLastname.textColor = [UIColor colorWithRed:17.0f/255.0f green:46.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
     self.txtLastname.frame = CGRectMake(self.background.frame.origin.x +40, self.background.frame.origin.y, self.txtLastname.frame.size.width, self.txtLastname.frame.size.height);
     self.txtLastname.keyboardType = UIKeyboardTypeEmailAddress;
-    [self addSubview:self.txtLastname];
+    [self.scrollView addSubview:self.txtLastname];
     
     
     self.txtName = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, self.background.image.size.width - 40, txtFieldHeight)];
-    self.txtName.placeholder = @"Last-name";
+    self.txtName.placeholder = @"Name";
     self.txtName.font = [UIFont fontWithName:@"Avenir-Medium" size:14];
     self.txtName.textColor = [UIColor colorWithRed:17.0f/255.0f green:46.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
     self.txtName.frame = CGRectMake(self.background.frame.origin.x +40, self.txtLastname.frame.origin.y+self.txtName.frame.size.height, self.txtName.frame.size.width, self.txtName.frame.size.height);
     self.txtName.keyboardType = UIKeyboardTypeEmailAddress;
-    [self addSubview:self.txtName];
+    [self.scrollView addSubview:self.txtName];
     
     
     self.txtEmail = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, self.background.image.size.width - 40, txtFieldHeight)];
-    self.txtEmail.placeholder = @"Last-name";
+    self.txtEmail.placeholder = @"E-mail";
     self.txtEmail.font = [UIFont fontWithName:@"Avenir-Medium" size:14];
     self.txtEmail.textColor = [UIColor colorWithRed:17.0f/255.0f green:46.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
     self.txtEmail.frame = CGRectMake(self.background.frame.origin.x +40, self.txtName.frame.origin.y+self.txtEmail.frame.size.height, self.txtEmail.frame.size.width, self.txtEmail.frame.size.height);
     self.txtEmail.keyboardType = UIKeyboardTypeEmailAddress;
-    [self addSubview:self.txtEmail];
+    [self.scrollView addSubview:self.txtEmail];
     
     
     self.txtPassword = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, self.background.image.size.width, txtFieldHeight)];
-    self.txtPassword.placeholder = @"password";
+    self.txtPassword.placeholder = @"Password";
     self.txtPassword.textColor = [UIColor colorWithRed:17.0f/255.0f green:46.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
     
     self.txtPassword.font = [UIFont fontWithName:@"Avenir-Medium" size:14];
     self.txtPassword.frame = CGRectMake(self.background.frame.origin.x + 40 , self.txtEmail.frame.origin.y+self.txtPassword.frame.size.height, self.txtPassword.frame.size.width, self.txtPassword.frame.size.height);
     self.txtPassword.secureTextEntry = YES;
-    [self addSubview:self.txtPassword];
+    [self.scrollView addSubview:self.txtPassword];
     
     
     
     self.txtRepPassword = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, self.background.image.size.width, txtFieldHeight)];
-    self.txtPassword.placeholder = @"password";
-    self.txtPassword.textColor = [UIColor colorWithRed:17.0f/255.0f green:46.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
+    self.txtRepPassword.placeholder = @"Repeat password";
+    self.txtRepPassword.textColor = [UIColor colorWithRed:17.0f/255.0f green:46.0f/255.0f blue:66.0f/255.0f alpha:1.0f];
     
     self.txtRepPassword.font = [UIFont fontWithName:@"Avenir-Medium" size:14];
     self.txtRepPassword.frame = CGRectMake(self.background.frame.origin.x + 40 , self.txtPassword.frame.origin.y+self.txtRepPassword.frame.size.height, self.txtRepPassword.frame.size.width, self.txtRepPassword.frame.size.height);
     self.txtRepPassword.secureTextEntry = YES;
-    [self addSubview:self.txtRepPassword];
+    [self.scrollView addSubview:self.txtRepPassword];
     
     
     
@@ -117,10 +117,9 @@
     [self.btnRegister setBackgroundColor:[UIColor colorWithRed:234.0/255.0 green:84.0/255.0 blue:78.0/255.0 alpha:1.0]];
     self.btnRegister.titleLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:12];
     [self.btnRegister setTitle:@"Register" forState:UIControlStateNormal];
-    [self addSubview:self.btnRegister];
+    [self.scrollView addSubview:self.btnRegister];
     
     self.btnRegister.layer.cornerRadius = 10; // this value vary as per your desire
-    //[self.btnRegister setImage:[UIImage imageNamed:@"lock"] forState:UIControlStateNormal];
     self.btnRegister.clipsToBounds = YES;
     
 }

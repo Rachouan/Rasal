@@ -73,9 +73,6 @@
     }];
     
     [operation start];
-    
-    
-    
 }
 
 

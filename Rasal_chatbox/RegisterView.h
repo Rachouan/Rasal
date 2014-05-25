@@ -19,4 +19,6 @@
 @property (nonatomic,strong) UIButton *btnRegister;
 @property (nonatomic, strong) UIButton * upload;
 
+@property (nonatomic, strong) UIScrollView *scrollView;
+
 @end

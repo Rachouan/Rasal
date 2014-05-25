@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AFNetworking.h>
 #import "RegisterView.h"
+
 
 @interface RegisterViewController : UIViewController
 

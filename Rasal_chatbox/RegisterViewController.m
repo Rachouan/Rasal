@@ -43,6 +43,28 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self.view.btnRegister addTarget:self action:@selector(registerBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
+    
+}
+
+- (void)registerBtnTapped:(id)sender{
+    
+    NSString *path = @"http://volpesalvatore.be/rasal/api/insertUser";
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *params = @{@"email": self.view.txtEmail.text,
+                             @"password": self.view.txtRepPassword.text,
+                             @"naam": self.view.txtLastname.text,
+                             @"voornaam": self.view.txtName.text,
+                             @"profilePic": [NSString stringWithFormat:@"1.png"]};
+    
+    [manager POST:path
+       parameters:params
+          success:^(AFHTTPRequestOperation *operation, id responseObject) { NSLog(@"JSON: %@", responseObject); }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) { NSLog(@"Error: %@", error); }
+     ];
+    
 }
 
 - (void)didReceiveMemoryWarning
