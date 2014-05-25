@@ -36,11 +36,12 @@
     
     for (Messages *message in self.messages) {
         
-        UILabel *user_message_lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width - 20, 30)];
+        UILabel *user_message_lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 360, 30)];
         user_message_lbl.text = message.message;
         [user_message_lbl setBackgroundColor:[UIColor colorWithRed:0.92 green:0.92 blue:0.92 alpha:1]];
         user_message_lbl.center = CGPointMake(self.frame.size.width / 2, yPos);
         user_message_lbl.layer.cornerRadius = 10;
+        user_message_lbl.numberOfLines = 0;
         [self.scrollVW addSubview:user_message_lbl];
         
         yPos += user_message_lbl.frame.size.height + 10;
