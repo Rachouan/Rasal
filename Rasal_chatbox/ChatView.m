@@ -29,25 +29,28 @@
 
 -(void)newMessages:(NSMutableArray *)array{
     
+    NSLog(@"NEW MESSAGES");
+    NSLog(@"%@",self.messages);
     
-    for (UIView *subview in self.scrollVW.subviews) {
-        [subview removeFromSuperview];
-    }
+    NSArray *tempArray = [array copy];
+    
     
     UIImage *image = [UIImage imageNamed:@"1.png"];
     
-    self.yPos = 40;
-    
     UIImage *clock = [UIImage imageNamed:@"watch"];
+    
     
     for (Messages *message in self.messages) {
         
-        
-        for (Messages *newMessages in array) {
+        for (Messages *newMessage in tempArray) {
             
-            if(message.identifier != newMessages.identifier){
+            if(message.identifier != newMessage.identifier){
+             
+                NSLog(@"jeej new message %@",newMessage.message);
                 
-                [self.messages addObject:newMessages];
+                [self.messages addObject:newMessage];
+                [array removeObject:newMessage];
+                
                 
                 int xPos = 20;
                 
@@ -82,7 +85,7 @@
                 imageLayer.mask = mask;
                 
                 
-                //user_message_lbl.layer.borderColor = [UIColor colorWithRed:221.0f/255.0f green:222.0f/255.0f blue:219.0f/255.0f alpha:1.0f].CGColor;
+                user_message_lbl.layer.borderColor = [UIColor colorWithRed:221.0f/255.0f green:222.0f/255.0f blue:219.0f/255.0f alpha:1.0f].CGColor;
                 
                 [self drawRect:CGRectMake(0, 0, 100, 100)];
                 
@@ -120,9 +123,9 @@
                 [self.scrollVW addSubview:user_message_lbl];
                 
                 
-                /*NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-                 [dateFormat setDateFormat:@"EE, d LLLL yyyy HH:mm:ss Z"];
-                 NSDate *date = [dateFormat dateFromString:message.current_date];*/
+                NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+                [dateFormat setDateFormat:@"EE, d LLLL yyyy HH:mm:ss Z"];
+                NSDate *date = [dateFormat dateFromString:message.current_date];
                 
                 NSLog(@"%@",message.current_date);
                 
@@ -140,13 +143,20 @@
                 [self.scrollVW addSubview:hour];
                 
                 self.yPos += user_message_lbl.frame.size.height + 20;
+
                 
                 
+            }else{
+                
+                NSLog(@"Nope not equal");
             }
+
             
         }
-        
     }
+    
+    
+    self.scrollVW.contentSize = CGSizeMake(0, self.yPos);
     
     
 }
@@ -157,15 +167,12 @@
     if(self.messages){
         
         [self newMessages:array];
+        
     }else{
         
         self.messages = [NSMutableArray array];
         
         self.messages = array;
-        
-        for (UIView *subview in self.scrollVW.subviews) {
-            [subview removeFromSuperview];
-        }
         
         UIImage *image = [UIImage imageNamed:@"1.png"];
         
