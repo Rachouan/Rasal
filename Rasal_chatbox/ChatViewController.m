@@ -40,9 +40,9 @@
 
 - (void)loadAllMessages{
     
-    self.messages = [NSMutableArray array];
+    self.newMessages = [NSMutableArray array];
     
-    NSLog(@"%lu",(unsigned long)self.messages.count);
+    //NSLog(@"%lu",(unsigned long)self.messages.count);
     
     NSString *path = @"http://volpesalvatore.be/rasal/api/messages";
     
@@ -64,6 +64,7 @@
                 [self.messages addObject:message];
                 }
             }
+            
             [self.view reloadChat:self.messages];
         }else{
             NSLog(@"Error Json");

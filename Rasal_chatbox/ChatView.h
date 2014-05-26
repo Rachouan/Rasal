@@ -14,6 +14,7 @@
 @interface ChatView : UIView
 
 @property (nonatomic,strong) NSMutableArray *messages;
+@property (nonatomic)int yPos;
 @property (nonatomic, strong) UIScrollView * scrollVW;
 
 @property (nonatomic, strong) UITextField *sendMessageTxt;
