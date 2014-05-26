@@ -40,7 +40,7 @@
 
 - (void)loadAllMessages{
     
-    self.newMessages = [NSMutableArray array];
+    self.messages = [NSMutableArray array];
     
     //NSLog(@"%lu",(unsigned long)self.messages.count);
     

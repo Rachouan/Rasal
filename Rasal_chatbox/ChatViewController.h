@@ -17,7 +17,6 @@
 
 @property (nonatomic, strong) ChatView *view;
 @property (nonatomic,strong)NSMutableArray *messages;
-@property (nonatomic,strong)NSMutableArray *newMessages;
 @property (nonatomic, strong) User * selectedUser;
 @property (nonatomic, strong) User * me;
 @property (nonatomic, strong) NSTimer * timer;
