@@ -12,17 +12,21 @@
 #import "User.h"
 #import "UserFactory.h"
 #import "ChatViewController.h"
+#import "ChatTableViewController.h"
 #import "UserOverviewTableViewCell.h"
 #import "LoginViewController.h"
+#import "UIBubbleTableViewDataSource.h"
+#import "UIBubbleTableView.m"
 
-@interface UserOverviewTableViewController : UITableViewController <UITableViewDelegate>
+@interface UserOverviewTableViewController : UITableViewController <UITableViewDelegate,UIBubbleTableViewDataSource>
 
 @property (nonatomic, strong) NSMutableArray *users;
 @property (nonatomic,strong)UIRefreshControl * refreshControl;
 @property (nonatomic, strong) NSMutableArray * loadedData;
 @property (nonatomic, strong) NSMutableArray *messages;
 @property (nonatomic, strong) LoginViewController * loginVC;
-
+@property (nonatomic, strong) ChatTableViewController * chatTVC;
 @property (nonatomic, strong) ChatViewController *chatVC;
+@property (nonatomic, strong) UIBubbleTableView * bubTVC;
 
 @end

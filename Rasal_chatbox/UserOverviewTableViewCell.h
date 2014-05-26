@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIBubbleTableViewDataSource.h"
 
 @interface UserOverviewTableViewCell : UITableViewCell
 
