@@ -188,7 +188,7 @@
             /*self.chatVC = [[ChatViewController alloc] initWithNibName:nil bundle:nil andChatVenster:selectedUser andMe:user andAllMessages:self.messages];
             [self.navigationController pushViewController:self.chatVC animated:YES];*/
             
-            //self.chatTVC = [[ChatTableViewController alloc]initWithStyle:UITableViewStylePlain andSelectedUser:selectedUser andMe:selectedUser];
+            self.chatTVC = [[ChatTableViewController alloc]initWithStyle:UITableViewStylePlain andSelectedUser:selectedUser andMe:selectedUser];
             [self.navigationController pushViewController:self.chatTVC animated:YES];
             
         }
